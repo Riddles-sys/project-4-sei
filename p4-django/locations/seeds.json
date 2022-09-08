@@ -1,0 +1,16 @@
+[
+{
+  "model": "locations.location",
+  "pk": 1,
+  "fields": {
+    "name": "The Shire",
+    "history": "Birth place of Bilbo Bagins",
+    "trivia": "The Shire is protected by the Dúnedain Rangers, who regularly patrol The Shire's borders. These Rangers are the last remnants of the  Dúnedain of Arnor, the old Kingdom in which The Shire is located.",
+    "location_images": "[\"https://static.wikia.nocookie.net/aotr/images/1/1d/Evil_shire_loadscreen.png\", \"https://image.shutterstock.com/image-photo/hobbiton-movie-set-matamata-new-600w-1726339966.jpg\"]",
+    "youtube_id": "510o9PRy_0o",
+    "dangers": [
+      1
+    ]
+  }
+}
+]

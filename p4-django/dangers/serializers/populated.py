@@ -1,6 +1,5 @@
-import imp
 from .common import DangerSerializer
 from locations.serializers.common import LocationSerializer
 
-class PopulatedDangerSerializer(LocationSerializer):
+class PopulatedDangerSerializer(DangerSerializer):
   locations = LocationSerializer(many=True)
