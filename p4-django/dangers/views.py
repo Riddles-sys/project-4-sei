@@ -11,4 +11,4 @@ class DangerListView(APIView):
   def get(self, _request):
     dangers = Danger.object.all()
     serialized_dangers = PopulatedDangerSerializer(dangers, many=True)
-    return Response(serialized_dangers.data)
+    return Response(serialized_dangers.data, status=status)

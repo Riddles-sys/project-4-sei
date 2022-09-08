@@ -3,7 +3,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import NotFound
 from .serializers.common import LocationSerializer
-# from .serializers.populated import PopulatedLocationSerializer
+from .serializers.populated import PopulatedLocationSerializer, PopulatedLocationDangerSerializer
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
 
 from .models import Location
 
@@ -11,12 +13,13 @@ from .models import Location
 # Create your views here.
 # * All locations
 class LocationListView(APIView):
+  permission_classes = (IsAuthenticatedOrReadOnly, )
 
   def get(self, request):
 
     locations = Location.objects.all()
     print('locations -->', locations)
-    serialized_locations = LocationSerializer(locations, many=True)
+    serialized_locations = PopulatedLocationDangerSerializer(locations, many=True)
     print(serialized_locations.data)
     return Response(serialized_locations.data, status=status.HTTP_200_OK)
 
@@ -43,14 +46,15 @@ class LocationDetailView(APIView):
   # Get single location
   def get(self, _request, pk):
       location = self.get_location(pk=pk)
-      serialized_location = LocationSerializer(location)
+      serialized_location = PopulatedLocationSerializer(location)
       return Response(serialized_location.data)
 
   # Delete single location
   def delete(self, request, pk):
     location_to_delete = self.get_location(pk=pk)
     location_to_delete.delete()
-    return Response(detail='Location deleted', status=status.HTTP_204_NO_CONTENT)
+    print('location deleted')
+    return Response(status=status.HTTP_204_NO_CONTENT)
 
   # Updating single location
   def put(self, request, pk):  

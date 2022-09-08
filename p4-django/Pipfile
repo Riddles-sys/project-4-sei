@@ -10,6 +10,10 @@ pylint = "*"
 autopep8 = "*"
 djangorestframework = "*"
 pyjwt = "*"
+profanityfilter = "*"
+better-profanity = "*"
+simplejwt = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 
