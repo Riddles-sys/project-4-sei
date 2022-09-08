@@ -1,7 +1,7 @@
 from .common import LocationSerializer
-from reviews.serializers.common import ReviewSerializer
+from dangers.serializers.common import DangerSerializer
+from reviews.serializers.populated import PopulatedReviewSerializer
 
-# Extend location serializer
-class PopulatedLocationSerializer(LocationSerializer):
-  locations = ReviewSerializer(many=True)
-  
+class PopulateLocationSerializer(LocationSerializer):
+  reviews = PopulatedReviewSerializer
+  dangers = DangerSerializer(many=True)

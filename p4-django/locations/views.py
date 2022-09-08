@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import NotFound
 from .serializers.common import LocationSerializer
+# from .serializers.populated import PopulatedLocationSerializer
 
 from .models import Location
 
@@ -11,7 +12,7 @@ from .models import Location
 # * All locations
 class LocationListView(APIView):
 
-  def get(self, _request):
+  def get(self, request):
 
     locations = Location.objects.all()
     print('locations -->', locations)
