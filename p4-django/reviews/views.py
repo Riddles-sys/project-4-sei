@@ -1,7 +1,9 @@
+from urllib import request
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.exceptions import NotFound
+from rest_framework.exceptions import NotFound, PermissionDenied
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from .serializers.common import ReviewSerializer
 from .models import Review
@@ -35,6 +37,7 @@ class ReviewListView(APIView):
 
 #* Single Review
 class ReviewDetailView(APIView):
+  permission_classes = (IsAuthenticatedOrReadOnly, )
 
   def get_review(self, pk):
     try:
@@ -44,6 +47,8 @@ class ReviewDetailView(APIView):
 
   def delete(self, _request, pk):
     review_to_delete = self.get_review(pk)
+    if review_to_delete != request.user:
+      raise PermissionDenied('Unauthorised Access')
     # print('Review owner ID --->', review_to_delete.owner)
     review_to_delete.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
