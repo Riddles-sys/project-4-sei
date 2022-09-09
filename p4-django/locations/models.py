@@ -33,6 +33,18 @@ class Location(models.Model):
     related_name = 'location_dislike'
     )
 
+  favourites = models.ManyToManyField(
+    'jwt_auth.User', 
+    blank=True, 
+    related_name = 'location_favourite'
+    )
+
+  creatures = models.ManyToManyField(
+    'creatures.Creature',
+    blank=True,
+    related_name='location_creature'
+  )
+
 #* This is the one that shows up on the db folder
   def __str__(self):
     return f'{self.name}'

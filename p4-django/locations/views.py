@@ -91,3 +91,15 @@ class DislikesView(APIView):
     else: 
       post.dislikes.add(request.user)
     return Response(post.dislikes.data, status=status.HTTP_202_ACCEPTED)
+
+class FavouritesListView(APIView):
+# creating favourites
+  def favourites(self, request, pk):
+    favourite_location = get_object_or_404(Location, pk=pk)
+    if favourite_location.favourites.filter(id=request.user.id).exist():
+      favourite_location.favourites.remove(request.user)
+    else:
+      favourite_location.favourites.add(request.user)
+    return Response(favourite_location.data)
+
+    
