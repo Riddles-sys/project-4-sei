@@ -1,7 +1,10 @@
+from gc import get_objects
+from http.client import HTTPResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import NotFound
+from django.shortcuts import get_object_or_404
 from .serializers.common import LocationSerializer
 from .serializers.populated import PopulatedLocationSerializer, PopulatedLocationDangerSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -67,3 +70,24 @@ class LocationDetailView(APIView):
     except Exception as e:
       print(e)
       return Response(str(e), status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+# Likes
+class LikesView(APIView):
+  
+  def LocationLike(self, request, pk):
+    post = get_object_or_404(Location, id=request.POST.get('location_id'))
+    if post.likes.filter(id=request.user.id).exists():
+      post.likes.remove(request.user)
+    else: 
+      post.likes.add(request.user)
+    return Response(post.likes.data, status=status.HTTP_202_ACCEPTED)
+
+class DislikesView(APIView):
+
+  def LocationDislike(self, request, pk):
+    post = get_object_or_404(Location, id=request.POST.get('location_id'))
+    if post.dislikes.filter(id=request.user.id).exists():
+      post.dislikes.remove(request.user)
+    else: 
+      post.dislikes.add(request.user)
+    return Response(post.dislikes.data, status=status.HTTP_202_ACCEPTED)

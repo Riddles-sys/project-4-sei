@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'jwt_auth',
     'locations',
     'reviews',
-    'dangers'
+    'dangers',
+    # 'favourites'
 ]
 
 MIDDLEWARE = [
