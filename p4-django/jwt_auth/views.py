@@ -6,9 +6,11 @@ from django.conf import settings
 from rest_framework.exceptions import PermissionDenied
 from django.contrib.auth import get_user_model
 from datetime import datetime, timedelta
+from rest_framework.permissions import IsAuthenticated
 import jwt
 User = get_user_model()
 from .serializers.common import UserSerializer
+
 
 # Create your views here.
 class RegisterView(APIView):
@@ -56,3 +58,9 @@ class LoginView(APIView):
     print('Token ---->', token)
 
     return Response({ 'token': token, 'message': f'Welcome back {user_to_login.username}'})
+
+
+  class Logout(APIView):
+
+    def User_logout(request):
+      permission_classes = (IsAuthenticated)
