@@ -3,21 +3,21 @@
   "model": "dangers.danger",
   "pk": 1,
   "fields": {
-    "name": "Low-Risk"
+    "name": "Low Risk"
   }
 },
 {
   "model": "dangers.danger",
   "pk": 2,
   "fields": {
-    "name": "Medium-Risk"
+    "name": "High Risk"
   }
 },
 {
   "model": "dangers.danger",
   "pk": 3,
   "fields": {
-    "name": "High-Risk"
+    "name": "Medium Risk"
   }
 }
 ]

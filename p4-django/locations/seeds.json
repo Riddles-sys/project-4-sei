@@ -1,1 +1,68 @@
 [
+{
+  "model": "locations.location",
+  "pk": 1,
+  "fields": {
+    "name": "The Shire",
+    "history": "Birth place of Bilbo Bagins",
+    "trivia": "The Shire is protected by the Dúnedain Rangers, who regularly patrol The Shire's borders. These Rangers are the last remnants of the  Dúnedain of Arnor, the old Kingdom in which The Shire is located.",
+    "location_images": "[\"https://static.wikia.nocookie.net/aotr/images/1/1d/Evil_shire_loadscreen.png\", \"https://image.shutterstock.com/image-photo/hobbiton-movie-set-matamata-new-600w-1726339966.jpg\"]",
+    "youtube_id": "510o9PRy_0o",
+    "dangers": [
+      1
+    ],
+    "likes": [],
+    "dislikes": [],
+    "favourites": [],
+    "creatures": [
+      1
+    ],
+    "inhabitants": [
+      1
+    ]
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 2,
+  "fields": {
+    "name": "Rivendell",
+    "history": "Rivendell, also known as Imladris in Sindarin, was an Elven town and the house of Elrond located in Middle-earth. It is described as \"The Last Homely House East of the Sea\" in reference to Valinor, which was west of the Great Sea in Aman.",
+    "trivia": "When Aragorn was a child, his father Arathorn was struck down and killed in battle with orcs. Soon after, Aragorn was sent to Rivendell, where he was taken care of by Elrond.",
+    "location_images": "[\"https://static.wikia.nocookie.net/lotr/images/a/a1/Rivendell_from_path_-_FotR.png\"]",
+    "youtube_id": "BOAS5SGcYF4",
+    "dangers": [
+      1
+    ],
+    "likes": [],
+    "dislikes": [],
+    "favourites": [],
+    "creatures": [],
+    "inhabitants": [
+      2
+    ]
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 3,
+  "fields": {
+    "name": "Bree",
+    "history": "The village was bordered on the north side by Bree-hill, from which stretched a dike and hedge in a great semicircle protecting the town. This barrier had three gates, through which the Great East Road passed.",
+    "trivia": "Peter Jackson: As the belching peasant outside the Prancing Pony Inn in Bree.",
+    "location_images": "[\"https://static.wikia.nocookie.net/lotr/images/f/f7/Breemap3.jpg\"]",
+    "youtube_id": "xsSXGWHYS14",
+    "dangers": [
+      3
+    ],
+    "likes": [],
+    "dislikes": [],
+    "favourites": [],
+    "creatures": [],
+    "inhabitants": [
+      1,
+      3
+    ]
+  }
+}
+]

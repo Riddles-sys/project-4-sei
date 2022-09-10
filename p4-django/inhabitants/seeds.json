@@ -1,0 +1,38 @@
+[
+{
+  "model": "inhabitants.inhabitant",
+  "pk": 1,
+  "fields": {
+    "name": "Hobbit",
+    "origin": "Anduin Vale",
+    "height": "2' - 4'",
+    "languages": "Hobbitish, Westron",
+    "images": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2012/12/09/22/Pg-12-hobbit-getty.jpg",
+    "about": "Hobbits, also known as Halflings, were an ancient mortal race that lived in Middle-earth. Although their exact origins are unknown, they were initially found in the northern regions of Middle-earth and below the Vales of Anduin. At the beginning of the Third Age, hobbits moved north and west. Most of their race eventually founded the land of the Shire in the year TA 1601."
+  }
+},
+{
+  "model": "inhabitants.inhabitant",
+  "pk": 2,
+  "fields": {
+    "name": "Elves",
+    "origin": "Arda",
+    "height": "Slightly taller than Man",
+    "languages": "Elvish, Quenya, Sindarin, Westron",
+    "images": "https://static.wikia.nocookie.net/lotr/images/0/05/Elves_leaving_Middle-earth.png",
+    "about": "The Elves, were the first and eldest of the Children of Ilúvatar, considered the fairest and wisest of the earthly race of Arda. They called themselves the Quendi (Quenya; IPA: [ˈkʷendi]; \"the Speakers\"; singular Quendë; [ˈkʷende]), referring to how at their creation, they were the only living things they knew of who spoke."
+  }
+},
+{
+  "model": "inhabitants.inhabitant",
+  "pk": 3,
+  "fields": {
+    "name": "Man & Woman",
+    "origin": "Middle-earth",
+    "height": "Human height",
+    "languages": "Westron, Adûnaic, Rohirric, Dalish, Black Speech",
+    "images": "https://miro.medium.com/max/1200/1*StSr7zNFtgBIsyCcQHEzVQ.jpeg",
+    "about": "Men (initially named Atani) were one of several races inhabiting Arda. They are the humans of Middle-earth, and the second of the Children of Ilúvatar."
+  }
+}
+]

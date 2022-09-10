@@ -1,0 +1,22 @@
+[
+{
+  "model": "jwt_auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$rX67XABWRY1Y8I7seJMgke$ORO3lr+cWP+cc4BCf6dpkOm3RLw1URh4Cv12Jrrp4TY=",
+    "last_login": "2022-09-09T20:56:12.689Z",
+    "is_superuser": true,
+    "username": "riddles",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-09-09T20:55:55.148Z",
+    "name": "",
+    "email": "rid@email.com",
+    "profile_image": "",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
