@@ -45,6 +45,12 @@ class Location(models.Model):
     related_name='location_creature'
   )
 
+  inhabitants = models.ManyToManyField(
+    'inhabitants.Inhabitant',
+    blank=True,
+    related_name='location_inhabitant'
+  )
+
 #* This is the one that shows up on the db folder
   def __str__(self):
     return f'{self.name}'

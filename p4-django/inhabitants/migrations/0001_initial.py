@@ -8,12 +8,11 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('dangers', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Creature',
+            name='Inhabitant',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(default=None, max_length=100)),
@@ -22,7 +21,6 @@ class Migration(migrations.Migration):
                 ('languages', models.CharField(default=None, max_length=100)),
                 ('images', models.CharField(default=None, max_length=300)),
                 ('about', models.CharField(default=None, max_length=400)),
-                ('dangers', models.ManyToManyField(related_name='dangers', to='dangers.danger')),
             ],
         ),
     ]

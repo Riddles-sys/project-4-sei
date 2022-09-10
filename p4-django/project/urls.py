@@ -21,5 +21,6 @@ urlpatterns = [
     path('locations/', include('locations.urls')),
     path('reviews/', include('reviews.urls')),
     path('auth/', include('jwt_auth.urls')),
-    path('creatures/', include('creatures.urls'))
+    path('creatures/', include('creatures.urls')),
+    path('inhabitants/', include('inhabitants.urls'))
 ]

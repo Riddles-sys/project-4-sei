@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'locations',
     'reviews',
     'dangers',
-    'creatures'
+    'creatures',
+    'inhabitants'
 ]
 
 MIDDLEWARE = [

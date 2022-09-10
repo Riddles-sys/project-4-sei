@@ -18,3 +18,5 @@ class CreatureListView(APIView):
     serialized_creatures = CreatureSerializer(creatures, many=True)
     print(serialized_creatures.data)
     return Response(serialized_creatures.data, status=status.HTTP_200_OK)
+
+    
