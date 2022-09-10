@@ -4,16 +4,16 @@ from django.db import models
 
 
 
-# danger_choices = (
-#   ('1', 'Low-Risk'),
-#   ('2', 'Medium-Risk'),
-#   ('3', 'High-Risk')
-# )
+danger_choices = (
+  ('Low Risk', 'Low Risk'),
+  ('Medium Risk', 'Medium Risk'),
+  ('High Risk', 'High Risk')
+)
 
 # Create your models here.
 class Danger(models.Model):
 
-  name = models.CharField(max_length=100)
+  name = models.CharField(max_length=100, blank=True, choices = danger_choices)
 
 
 
