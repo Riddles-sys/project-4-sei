@@ -1,6 +1,7 @@
 import LocationIndex from './components/LocationIndex'
 import Landing from './components/Landing'
 import Register from './components/users/Register'
+import LocationSingle from './components/LocationSingle'
 
 
 import { useEffect } from 'react'
@@ -26,6 +27,7 @@ const App = () => {
           <Route path='/' element={<Landing />} />
           <Route path='/register' element={<Register />} />
           <Route path='/locations' element={<LocationIndex />} />
+          <Route path='/locations/:locationId' element={<LocationSingle />} />
         </Routes>
       </BrowserRouter>
     </div>

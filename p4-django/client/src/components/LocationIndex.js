@@ -44,7 +44,7 @@ const LocationIndex = () => {
                 const { id } = location
                 return (
                   <Col className="mb-4" md='3' key={id}>
-                    <Link className="mb-4" to={`/${id}`}>
+                    <Link className="mb-4" to={`/locations/${id}`}>
                       <Card className='card ship'>
                         <Card.Img variant='top' className='w-100' src={location.location_images}></Card.Img>
                         <Card.Body><Card.Title>{location.name}</Card.Title> {location.trivia} - {location.trivia} </Card.Body>

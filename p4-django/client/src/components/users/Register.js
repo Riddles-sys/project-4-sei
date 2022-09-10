@@ -41,12 +41,9 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      const res = await axios.post(
-        '/api/auth/register/',
-        formData
-      )
+      const res = await axios.post('/api/register/', formData)
       setTokenToLocalStorage(res.data.token)
-      navigate('/login')
+      // navigate('/login')
       console.log(formData)
     } catch (error) {
       toast.error(error.response.data.message, {
@@ -86,8 +83,8 @@ const Register = () => {
           <input
             onInput={handleChange}
             type="text"
-            name="userName"
-            value={formData.userName}
+            name="username"
+            value={formData.username}
             placeholder="Username"
             required
           />
@@ -120,11 +117,11 @@ const Register = () => {
 
         {/* Confirm Password */}
         <Row>
-          <label htmlFor="confirmPassword">Confirm Password</label>
+          <label htmlFor="password_confirmation">Confirm Password</label>
           <input
             onInput={handleChange}
             type="password"
-            name="confirmPassword"
+            name="password_confirmation"
             value={formData.confirm}
             placeholder="Confirm Password"
             required
