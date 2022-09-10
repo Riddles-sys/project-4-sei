@@ -6,11 +6,11 @@ from django.conf import settings
 from rest_framework.exceptions import PermissionDenied
 from django.contrib.auth import get_user_model
 from datetime import datetime, timedelta
-from rest_framework import generics
+# from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 import jwt
 User = get_user_model()
-from .serializers.common import UserSerializer, ChangePasswordSerializer
+from .serializers.common import UserSerializer #ChangePasswordSerializer
 
 
 # Create your views here.
@@ -75,18 +75,18 @@ class LoggedInUser(APIView):
 
 
 # ! THESE NEED WORKING
-class Logout(APIView):
+# class Logout(APIView):
 
-  def User_logout(request):
-    permission_classes = permission_classes(IsAuthenticated)
+#   def User_logout(request):
+#     permission_classes = permission_classes(IsAuthenticated)
 
-#* For passwords change
-class ChangePasswordView(generics.UpdateAPIView):
+# #* For passwords change
+# class ChangePasswordView(generics.UpdateAPIView):
   
 
 
-  def post(self, request, pk):
-    queryset = User.objects.get(pk=pk)
-    permission_classes = (IsAuthenticated,)
-    serializer_class = ChangePasswordSerializer
+#   def post(self, request, pk):
+#     queryset = User.objects.get(pk=pk)
+#     permission_classes = (IsAuthenticated,)
+#     serializer_class = ChangePasswordSerializer
 

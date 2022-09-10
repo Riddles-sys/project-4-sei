@@ -13,17 +13,17 @@ const Register = () => {
   const navigate = useNavigate()
   //! State
   const [formData, setFormData] = useState({
-    name: '',
+    first_name: '',
     email: '',
-    userName: '',
+    username: '',
     password: '',
     confirmPassword: '',
   })
 
   const [errors, setErrors] = useState({
-    name: { message: '' },
+    first_name: { message: '' },
     email: { message: '' },
-    userName: { message: '' },
+    username: { message: '' },
     password: { message: '' },
     confirmPassword: { message: '' },
   })
@@ -40,10 +40,13 @@ const Register = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    console.log('wtf ------>')
     try {
-      const res = await axios.post('/api/register/', formData)
-      setTokenToLocalStorage(res.data.token)
-      // navigate('/login')
+      const { data } = await axios.post('/api/auth/register/', formData)
+      setTokenToLocalStorage(data.token)
+      console.log('endpoint reach ------>')
+      setFormData(data.formData)
+      navigate('/login')
       console.log(formData)
     } catch (error) {
       toast.error(error.response.data.message, {
@@ -66,20 +69,20 @@ const Register = () => {
       {/* <Row> */}
       <form onSubmit={handleSubmit} className="justify-content-between">
         <h3 className="text-center">Register</h3>
-        <Row>
-          <label htmlFor="name">Name</label>
+        {/* <Row>
+          <label htmlFor="first_name">Name</label>
           <input
             onInput={handleChange}
             type="text"
-            name="name"
-            value={formData.name}
+            name="first_name"
+            value={formData.first_name}
             placeholder="Name"
             required
           />
-        </Row>
+        </Row> */}
         {/* Email */}
         <Row>
-          <label htmlFor="userName">Username</label>
+          <label htmlFor="username">Username</label>
           <input
             onInput={handleChange}
             type="text"
@@ -122,7 +125,7 @@ const Register = () => {
             onInput={handleChange}
             type="password"
             name="password_confirmation"
-            value={formData.confirm}
+            value={formData.password_confirmation}
             placeholder="Confirm Password"
             required
           />

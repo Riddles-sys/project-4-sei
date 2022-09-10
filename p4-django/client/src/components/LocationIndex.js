@@ -18,7 +18,7 @@ const LocationIndex = () => {
         setLocations(data)
         // console.log(data)
       } catch (error) {
-        setError(error)
+        // setError(error)
         console.log(error)
       }
     }

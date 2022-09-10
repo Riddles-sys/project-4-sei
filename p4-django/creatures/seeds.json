@@ -1,0 +1,17 @@
+[
+{
+  "model": "creatures.creature",
+  "pk": 1,
+  "fields": {
+    "name": "Uruk-hai",
+    "origin": "Isengard",
+    "height": "Shorter than Men, taller than other Orcs",
+    "languages": "Black Speech, Orcish, Westron",
+    "images": "https://static.wikia.nocookie.net/lotr/images/5/5e/TtT_-_Ugl%C3%BAk_daytime.jpeg",
+    "about": "Uruk-hai (for short, Uruks) were brutal warriors of Middle-earth, and the strongest breed of Orc.",
+    "dangers": [
+      2
+    ]
+  }
+}
+]

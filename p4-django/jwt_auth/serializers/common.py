@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth import get_user_model, password_validation, validators
+from django.contrib.auth import get_user_model, password_validation
 from rest_framework.exceptions import ValidationError 
 from django.contrib.auth.hashers import make_password
 # import django.contrib.auth.password_validation as validators
@@ -33,7 +33,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
       model = User
-      fields = ('id', 'username', 'email', 'profile_image', 'password', 'password_confirmation')
+      fields = ('id', 'first_name', 'username', 'email', 'profile_image', 'password', 'password_confirmation')
 
     
 class ChangePasswordSerializer(serializers.ModelSerializer):

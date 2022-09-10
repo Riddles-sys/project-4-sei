@@ -2,7 +2,8 @@ import LocationIndex from './components/LocationIndex'
 import Landing from './components/Landing'
 import Register from './components/users/Register'
 import LocationSingle from './components/LocationSingle'
-
+import PageNavBar from './components/Navigation/PageNavBar'
+import Login from './components/users/Login'
 
 import { useEffect } from 'react'
 import axios from 'axios'
@@ -23,9 +24,11 @@ const App = () => {
         Hello world what is up!
       </h1>
       <BrowserRouter>
+        <PageNavBar />
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/register' element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path='/locations' element={<LocationIndex />} />
           <Route path='/locations/:locationId' element={<LocationSingle />} />
         </Routes>
