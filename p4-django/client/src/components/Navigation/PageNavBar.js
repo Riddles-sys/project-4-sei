@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { userIsAuthenticated, loginTextDisplay } from '../../auth/auth.js'
+import { useParams } from 'react-router-dom'
 
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -10,6 +11,7 @@ import Container from 'react-bootstrap/Container'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 const PageNavBar = () => {
   const navigate = useNavigate()
+  // const { userId } = useParams()
 
   const handleClick = (event) => {
     console.log(event.target.value)
@@ -36,48 +38,51 @@ const PageNavBar = () => {
   }
 
   return (
-    <NavBar className='nav' expand="md">
+    <NavBar className='nav' expand='md'>
       <ToastContainer />
       <Container>
-        <NavBar.Brand as={Link} to="/">
-          <span className="logo fw-bold">Middle Earth Tours</span>
+        <NavBar.Brand as={Link} to='/'>
+          <span className='logo fw-bold'>Middle Earth Tours</span>
         </NavBar.Brand>
         {userIsAuthenticated() && loginTextDisplay()}
-        <NavBar.Toggle aria-controls="basic-navbar-nav"></NavBar.Toggle>
-        <NavBar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          {/* <div className="search-container text-md-center text-end my-md-0 my-3">
+        <NavBar.Toggle aria-controls='basic-navbar-nav'></NavBar.Toggle>
+        <NavBar.Collapse id='basic-navbar-nav' className='justify-content-end'>
+          {/* <div className='search-container text-md-center text-end my-md-0 my-3'>
             <input
-              type="text"
-              className="seach"
-              placeholder="Search..."
+              type='text'
+              className='seach'
+              placeholder='Search...'
               onKeyUp={handleClick}
             ></input>
           </div> */}
           {userIsAuthenticated() ? (
             <>
-              <Nav.Link as={Link} to="/search">
-                <span className="underline ms-3"><span>🔎</span> Search</span>
+              <Nav.Link as={Link} to='/'>
+                <span className='underline ms-3'><span></span>Home</span>
               </Nav.Link>
-              <Nav.Link as={Link} to="/watchlist">
-                <span className="underline ms-3">Watchlist</span>
+              <Nav.Link as={Link} to='/locations'>
+                <span className='underline ms-3'>Locations</span>
               </Nav.Link>
-              <Nav.Link as={Link} to="/profile">
-                <span className="underline ms-3">Profile</span>
+              <Nav.Link as={Link} to='/profile/'>
+                <span className='underline ms-3'>Profile</span>
               </Nav.Link>
-              <Nav.Link onClick={handleLogout} as={Link} to="/">
-                <span className="underline ms-3">Logout</span>
+              {/* <Nav.Link as={Link} to='/profile'>
+                <span className='underline ms-3'>Profile</span>
+              </Nav.Link> */}
+              <Nav.Link onClick={handleLogout} as={Link} to='/'>
+                <span className='underline ms-3'>Logout</span>
               </Nav.Link>
             </>
           ) : (
             <>
-              <Nav.Link as={Link} to="/search">
-                <span className="underline ms-3"><span>🔎</span> Search</span>
+              <Nav.Link as={Link} to='/search'>
+                <span className='underline ms-3'><span>🔎</span> Search</span>
               </Nav.Link>
-              <Nav.Link as={Link} to="/register" className=" ms-3">
-                <span className="underline">Register</span>
+              <Nav.Link as={Link} to='/register' className=' ms-3'>
+                <span className='underline'>Register</span>
               </Nav.Link>
-              <Nav.Link as={Link} to="/login" className=" ms-3">
-                <span className="underline">Login</span>
+              <Nav.Link as={Link} to='/login' className=' ms-3'>
+                <span className='underline'>Login</span>
               </Nav.Link>
             </>
           )}

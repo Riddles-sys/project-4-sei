@@ -23,8 +23,8 @@ export const getPayload = () => {
 export const userIsAuthenticated = () => {
 
   const payload = getPayload()
-  console.log('paayload', payload)
-  console.log('token -------->', getToken)
+  // console.log('paayload', payload)
+  // console.log('token -------->', getToken)
   if (!payload) return
   const currentTime = Math.round(Date.now() / 1000)
   // console.log('Expiry date', payload.exp)
