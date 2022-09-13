@@ -81,7 +81,7 @@ const LocationSingle = () => {
 
       const { data } = await axios.post('/api/reviews/', formData, headers() )
       getData()
-
+      setLocations(data)
       setFormData({ text: '', location: '', owner: '' })
       // window.location.reload()
 
@@ -136,7 +136,7 @@ const LocationSingle = () => {
   //! Likes
 
   const handleAddLike = async (event) => {
-    event.preventDefault()
+    // event.preventDefault()
     try {
       console.log(getToken())
       console.log('form data -->', formData)
@@ -235,7 +235,9 @@ const LocationSingle = () => {
                                     <textarea id='comment' rows='4' className='px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400' name='text' value={formData.text} maxLength='280' onChange={handleReview} placeholder='Write a comment...' required></textarea>
                                   </div>
                                   <div className='flex justify-between items-center py-2 px-3 border-t dark:border-gray-600'>
-                                   
+                                    <button type="submit" value="Add Comment" name={locationId} required className=" btn btn-primary inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+                                    Post Review
+                                    </button>
                                     <button name={review.id} onClick={handleDelete}> 
                                       Delete
                                     </button>

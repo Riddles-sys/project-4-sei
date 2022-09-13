@@ -87,7 +87,7 @@ const EditProfile = () => {
             <h2>Profile</h2>
             <Form.Group className="mb-3" >
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" name="displayName" placeholder="Edit display name" value={updatedUserProfile.displayName} onChange={handleChange} />
+              <Form.Control type="text" name="username" placeholder="Edit display name" value={updatedUserProfile.username} onChange={handleChange} />
             </Form.Group>
             <Col>
               <img className='w-100' src={userProfile.profileImg} alt={updatedUserProfile.userName} />
@@ -99,8 +99,12 @@ const EditProfile = () => {
             </Form.Group>
             <hr />
             <Form.Group className="mb-3" >
-              <Form.Label><h2>About Me</h2></Form.Label>
-              <Form.Control as="textarea" rows={4} name="aboutMeText" placeholder="Edit About Me" value={updatedUserProfile.aboutMeText} onChange={handleChange} />
+              <Form.Label>Password</Form.Label>
+              <Form.Control onChange={handleChange} type="password" name="password" placeholder='Password' value={updatedUserProfile.password}  />
+            </Form.Group>
+            <Form.Group className="mb-3" >
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control onChange={handleChange} type="password" name="password_confirmation" placeholder='Confirm Password' value={updatedUserProfile.password_confirmation} />
             </Form.Group>
             <hr />
             <Form.Group className="mb-3" >

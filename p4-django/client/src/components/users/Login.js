@@ -104,10 +104,10 @@ const Login = () => {
 
   // export default Login
   return (
-    <>
-      <div className="w-full flex justify-center m-4">
+    <div>
+      <div className="login-wrapper w-full flex justify-center m-4">
         <ToastContainer />
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={onSubmit}>
+        <form className="login-form w-200 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={onSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
               Email
@@ -134,7 +134,7 @@ const Login = () => {
         <p className="text-center text-gray-500 text-xs">
         </p>
       </div>
-    </>
+    </div>
   )
 }
 export default Login

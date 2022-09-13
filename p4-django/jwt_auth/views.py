@@ -76,10 +76,30 @@ class UserProfile(APIView):
         print('print user', serialized_user)
         return Response(serialized_user.data, status=status.HTTP_200_OK)
 
-# class RetrieveUser(APIView):
+    # def put(self, request):
     
-#     def put(self, request, pk):
-#       user_to_update = User.objects.get(pk=pk)
-#       update_user = UserSerializer(user_to_update, data=request.data)
-#       if 
+    #     print(request.user.id)
+    #     print('requests', request.data)
+    #     request.data['owner'] = request.user.id
+    #     user_to_update = UserSerializer(data=request.data)
 
+    #     try:
+    #       user_to_update.is_valid(True)
+    #       user_to_update.save()
+    #       return Response(user_to_update.data, status=status.HTTP_201_CREATED)
+    #     except Exception as e:
+    #       print(e)
+    #       return Response(e.__dict__ if e.__dict__ else str(e), status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+
+    
+    def put(self, request, pk):
+        profile_to_update = self.get_user(pk=pk)
+        profile_to_update = UserSerializer(data=request.data)
+        try:
+          profile_to_update.is_valid(True)
+          profile_to_update.save()
+          return Response(profile_to_update.data, status=status.HTTP_201_CREATED)
+        except Exception as e:
+          print(e)
+          return Response(e.__dict__ if e.__dict__ else str(e), status=status.HTTP_422_UNPROCESSABLE_ENTITY)
