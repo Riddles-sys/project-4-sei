@@ -63,6 +63,9 @@ const Register = () => {
     }
   }
 
+
+
+
   return (
     <Container className="form-wrapper min-vh-100">
       <ToastContainer />

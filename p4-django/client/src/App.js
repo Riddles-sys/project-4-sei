@@ -33,6 +33,7 @@ const App = () => {
           <Route path='/locations' element={<LocationIndex />} />
           <Route path='/locations/:locationId' element={<LocationSingle />} />
           <Route path='/profile' element={<UserProfile />} />
+          
         </Routes>
       </BrowserRouter>
     </div>

@@ -12,7 +12,7 @@ const UserProfile = () => {
   const { userId } = useParams()
 
   const [ profile, setProfile ] = useState({})
-  // const [ location, setLocation ] = useState([])
+  const [ favourites, setFavourites ] = useState([])
   const [ error, setError ] = useState(false)
 
 
@@ -34,9 +34,10 @@ const UserProfile = () => {
         const { data } = await axios.get('/api/auth/profile/', {
           headers: { Authorization: `Bearer ${getToken()}` },
         })
-
         setProfile(data)
-        console.log('dataaaa----.>', data)
+        setFavourites(data.favourites)
+        console.log('favourites ------>', data.favourites)
+        console.log('data from user profile----.>', data)
       } catch (error) {
         console.log(error)
       }
@@ -48,40 +49,44 @@ const UserProfile = () => {
 
 
   return (
-    <Container as="main">
-      <Row>
+    <section className='pt-16 bg-blueGray-50'>
+      <div className='w-full lg:w-4/12 px-4 mx-auto'>
         { profile ? 
           <>
-            <h1>{profile.username}</h1>
-            {/* <Col md="6">
-              <img className='w-100' src={profile.location_images} alt={profile.name} />
-            </Col> */}
-            <Col md="6">
-              <h2>Description</h2>
-              <p>{profile.email}</p>
-              <hr />
-              <h2><span>🌍</span> Origin</h2>
-              <p>{profile.id}</p>
-              {/* <h2>{profile.genres[0].name}</h2> */}
-              <hr />
-              <h2><span></span> Added by</h2>
-              <p>{profile.image}</p>
-              <hr />
-              {/* <h1>{profile.inhabitants[0].name}</h1> */}
-              <Link to="/profile" className='btn dark'>Back to all Home</Link>
-            </Col>
+            <div className='relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16'>
+              <div className='px-6'>
+                <div className='flex flex-wrap justify-center'>
+                  <div className='w-full px-4 flex justify-center'>
+                    <div className='relative'>
+                      <img src={profile.image} className='shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px' />
+                    </div>
+                  </div>
+                </div>
+                <div className='text-center mt-12'>
+                  <h3 className='text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2'>
+                    {profile.username}
+                  </h3>
+                  <div className='text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase'>
+                    <i className='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400'></i>
+                    {profile.email}
+                  </div>
+                  <div className='text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase'>
+                    <i className='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400'></i>
+                    {profile.favourites}
+                  </div>
+                </div>
+              </div>
+          
+            </div>
           </>
           :
-          <h2 className="text-center">
+          <h2 className='text-center'>
             {error ? 'no comments' : 'loading'}
           </h2>
         }
-      </Row>
-
-    </Container>
-  )   
-
-
+      </div>
+    </section>
+  )
 }
 
 

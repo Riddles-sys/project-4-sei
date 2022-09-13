@@ -10,12 +10,14 @@ from .models import Review
 
 # Create your views here.
 class ReviewListView(APIView):
-  
-#* Get all reviews
-  def get(self, request):
+  permission_classes = (IsAuthenticatedOrReadOnly,)
 
+
+  def get(self, _request):
+    
     reviews = Review.objects.all()
     print('reviews -->', reviews)
+
     serialized_reviews = ReviewSerializer(reviews, many=True)
     print(serialized_reviews.data)
     return Response(serialized_reviews.data, status=status.HTTP_200_OK)
@@ -23,6 +25,10 @@ class ReviewListView(APIView):
 
 
   def post(self, request):
+    
+    print(request.user.id)
+    print('requests', request.data)
+    request.data['owner'] = request.user.id
     review_to_create = ReviewSerializer(data=request.data)
 
     try:
@@ -45,10 +51,20 @@ class ReviewDetailView(APIView):
     except Review.DoesNotExist:
       raise NotFound('Review not found')
 
-  def delete(self, _request, pk):
-    review_to_delete = self.get_review(pk)
-    if review_to_delete != request.user:
+  def delete(self, request, pk):
+    review_to_delete = self.get_review(pk=pk)
+
+    if review_to_delete.owner != request.user:
       raise PermissionDenied('Unauthorised Access')
     # print('Review owner ID --->', review_to_delete.owner)
     review_to_delete.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+  def put(self, request, pk):
+      review_to_update = self.get_review(pk=pk)
+      if review_to_update.owner != request.user:
+          raise PermissionDenied('Unauthorised Access')
+      review_to_update.update()
+      return Response(status=status.HTTP_200_OK)
+
+

@@ -11,8 +11,8 @@ class LocationSerializer(serializers.ModelSerializer):
     fields = '__all__'
 
 
-# class LikesSerializer(serializers.ModelSerializer):
+class FavouriteSerializer(serializers.ModelSerializer):
 
-#   class Meta:
-#     model = likes
-#     fields = '__all__'
+  class Meta:
+    model = Location
+    fields = ( 'favourites', )

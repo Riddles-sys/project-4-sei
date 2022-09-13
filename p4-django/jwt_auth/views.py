@@ -61,32 +61,25 @@ class LoginView(APIView):
     return Response({ 'token': token, 'message': f'Welcome back {user_to_login.username}'})
 
 #! View User When Logged In
-class LoggedInUser(APIView):
+class UserProfile(APIView):
+    permission_classes = (IsAuthenticated,)
 
-  def logged_user(self, _request, pk):
-    user_to_get = User.objects.all(pk=pk)
-    try:
-      pass
-    except Exception as e:
-      pass
+    def get_user(self, pk):
+        try:
+            return User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            raise PermissionDenied(detail="Invalid Credentials")
 
+    def get(self, request):
+        profile = self.get_user(request.user.id)
+        serialized_user = UserSerializer(profile)
+        print('print user', serialized_user)
+        return Response(serialized_user.data, status=status.HTTP_200_OK)
 
-
-
-
-# ! THESE NEED WORKING
-# class Logout(APIView):
-
-#   def User_logout(request):
-#     permission_classes = permission_classes(IsAuthenticated)
-
-# #* For passwords change
-# class ChangePasswordView(generics.UpdateAPIView):
-  
-
-
-#   def post(self, request, pk):
-#     queryset = User.objects.get(pk=pk)
-#     permission_classes = (IsAuthenticated,)
-#     serializer_class = ChangePasswordSerializer
+# class RetrieveUser(APIView):
+    
+#     def put(self, request, pk):
+#       user_to_update = User.objects.get(pk=pk)
+#       update_user = UserSerializer(user_to_update, data=request.data)
+#       if 
 
