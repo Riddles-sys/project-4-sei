@@ -6,6 +6,8 @@ from rest_framework.exceptions import NotFound, PermissionDenied
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from .serializers.common import ReviewSerializer
+from .serializers.populated import PopulatedReviewSerializer
+from jwt_auth.serializers.common import UserSerializer
 from .models import Review
 
 # Create your views here.
@@ -62,9 +64,24 @@ class ReviewDetailView(APIView):
 
   def put(self, request, pk):
       review_to_update = self.get_review(pk=pk)
-      if review_to_update.owner != request.user:
-          raise PermissionDenied('Unauthorised Access')
-      review_to_update.update()
-      return Response(status=status.HTTP_200_OK)
+      # request.data['owner'] = request.user.owner
+      review_to_update = ReviewSerializer(data=request.data)
+      try:
+        # if review_to_update.owner != request.user:
+        #     raise PermissionDenied('Unauthorised Access')
+        review_to_update.is_valid(True)
+        review_to_update.save()
+        return Response(review_to_update.data, status=status.HTTP_201_CREATED)
+      except Exception as e:
+        print(e)
+        return Response(e.__dict__ if e.__dict__ else str(e), status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+  # def put(self, request, pk):
+  #     review_update = self.get_review(pk=pk)
+  #     try:
+  #         test_put =  ReviewSerializer(review_update, data=request.data)
+  #         test_put.is_valid(raise_exception=True)
+  #         test_put.save()
+  #     except:
+  #         return Response({"message : Its working "})
 
