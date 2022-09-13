@@ -66,7 +66,7 @@ const UserProfile = () => {
                     <i className='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400'></i>
                     {profile.likes}
                   </div>
-                  <button className='btn btn-danger'>
+                  <button className='btn btn-warning mb-4'>
                     <Link to='/editProfile'>Edit Profile</Link>
                   </button>
                 </div>

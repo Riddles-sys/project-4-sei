@@ -50,11 +50,14 @@ const LocationSingle = () => {
       setReviews(data.reviews)
       setLikes(data.likes)
       setOwner(data.owner)
+      setLoading(false)
       console.log('owner  ---->', data.owner)
       console.log('likes  ---->', data.likes)
       console.log('data   ---->', data.reviews)
+
     } catch (error) {
       setErrors(error.message)
+
       console.log(error.message)
     }
   } 
@@ -153,6 +156,10 @@ const LocationSingle = () => {
     }
   }
 
+  const [ loading, setLoading ] = useState(true)
+
+  if (errors) return <h2>Something went wrong.</h2>
+  if (loading) return <h2>loading</h2>
 
   return (
     <>
@@ -213,7 +220,7 @@ const LocationSingle = () => {
                     <div className={update && owner === reviews.owner ? 'review-display hide' : 'review-display'}>
                       <h3>Reviews</h3>
                       { reviews.length > 0
-                        ?
+                        &&
                         reviews.map(review => {
                           const { id, owner, text } = review
                           return (                       
@@ -241,14 +248,12 @@ const LocationSingle = () => {
                                     <button name={review.id} onClick={handleDelete}> 
                                       Delete
                                     </button>
-                                    {owner === reviews.owner ? (
+                                    {owner === reviews.owner && 
                                       <button name={reviews.id} value={formData.text} onClick={handleEdit}>
                                         Edit
                                       </button>
                                       
-                                    ) : (
-                                      <></> 
-                                    )} 
+                                    } 
                                     {owner === reviews.owner ? (
                                       <button name={reviews.id} onClick={handleDelete}>
                                         🗑
@@ -264,10 +269,8 @@ const LocationSingle = () => {
                             </div>          
                           )
                         })
-                        :
-                        <>
-                          { errors ? <h2>Something went wrong.</h2> : <p>Loading</p>}
-                        </>
+                        
+               
                       }
                     </div>
                     

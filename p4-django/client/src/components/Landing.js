@@ -7,11 +7,11 @@ const Landing = () => {
       <p className="text-3xl text-gray-700 font-bold mb-5">
         Welcome!
       </p>
-      {/* <img className='w-100' src={onemap} useMap="#image-map"/>
+      <img className='w-100' src={onemap} useMap="#image-map"/>
 
       <map name="image-map">
         <area target="" alt="The Shire" title="The Shire" href="http://localhost:3000/locations/1" coords="72,191,227,94" shape="rect"/>
-      </map> */}
+      </map>
     </div>
   )
 }
