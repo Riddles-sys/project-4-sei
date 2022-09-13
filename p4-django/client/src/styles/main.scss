@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './locationsingle.scss';
 
 * {
   box-sizing: border-box;

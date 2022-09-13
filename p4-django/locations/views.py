@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.exceptions import NotFound
 from django.shortcuts import get_object_or_404
 from .serializers.common import LocationSerializer
-from .serializers.populated import PopulatedLocationSerializer, PopulatedLocationDangerSerializer
+from .serializers.populated import PopulatedLocationFavourites, PopulatedLocationSerializer, PopulatedLocationDangerSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
@@ -73,14 +73,34 @@ class LocationDetailView(APIView):
 
 # Likes
 class LikesView(APIView):
+
+  def get(self, request):
+
+    likes = Location.objects.get(likes)
+    print('reviews -->', likes)
+    serialized_likes = LocationSerializer(likes, many=True)
+    print(serialized_likes.data)
+    return Response(serialized_likes.data, status=status.HTTP_200_OK)
+
+  def post(self, request):
+    like_to_create = LocationSerializer(data=request.data)
+
+    try:
+      like_to_create.is_valid(True)
+      like_to_create.save()
+      return Response(like_to_create.data, status=status.HTTP_201_CREATED)
+    except Exception as e:
+      print(e)
+      return Response(e.__dict__ if e.__dict__ else str(e), status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
   
-  def LocationLike(self, request, pk):
-    post = get_object_or_404(Location, id=request.POST.get('location_id'))
-    if post.likes.filter(id=request.user.id).exists():
-      post.likes.remove(request.user)
-    else: 
-      post.likes.add(request.user)
-    return Response(post.likes.data, status=status.HTTP_202_ACCEPTED)
+  # def LocationLike(self, request, pk):
+  #   post = get_object_or_404(Location, id=request.POST.get('location_id'))
+  #   if post.likes.filter(id=request.user.id).exists():
+  #     post.likes.remove(request.user)
+  #   else: 
+  #     post.likes.add(request.user)
+  #   return Response(post.likes.data, status=status.HTTP_202_ACCEPTED)
 
 class DislikesView(APIView):
 
@@ -94,12 +114,25 @@ class DislikesView(APIView):
 
 class FavouritesListView(APIView):
 # creating favourites
-  def favourites(self, request, pk):
-    favourite_location = get_object_or_404(Location, pk=pk)
-    if favourite_location.favourites.filter(id=request.user.id).exist():
-      favourite_location.favourites.remove(request.user)
-    else:
-      favourite_location.favourites.add(request.user)
-    return Response(favourite_location.data)
+  # permission_classes = (IsAuthenticatedOrReadOnly, )
+
+  def get(self, _request):
+
+    favourites = Location.objects.all()
+    print('favourites -->', favourites)
+    serialized_favourites = PopulatedLocationFavourites(favourites, many=True)
+    print('endpoint hit for favourites', serialized_favourites.data)
+    return Response(serialized_favourites.data, status=status.HTTP_200_OK)
+
+  # def post(self, request):
+  #   print('request data ->', request.data)
+  #   favourites_to_add = PopulatedLocationFavourites(data=request.data)
+  #   try:
+  #     favourites_to_add.is_valid(True)
+  #     favourites_to_add.save()
+  #     return Response(favourites_to_add.data, status=status.HTTP_201_CREATED)
+  #   except Exception as e:
+  #     print('Error')
+  #     return Response(e.__dict__ if e.__dict__ else str(e), status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     

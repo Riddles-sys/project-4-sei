@@ -32,7 +32,7 @@ const LocationIndex = () => {
           Welcome!
         </p>
         <p className="text-gray-500 text-lg">
-          React and Tailwind CSS in action
+          Locations Index
         </p>
       </div>
       <Container as='main'>
@@ -46,9 +46,9 @@ const LocationIndex = () => {
                   <Col className="mb-4" md='3' key={id}>
                     <Link className="mb-4" to={`/locations/${id}`}>
                       <Card className='card ship'>
-                        <Card.Img variant='top' className='w-100' src={location.location_images}></Card.Img>
+                        <Card.Img variant='top' className='w-100' src={location.location_image_1}></Card.Img>
                         <Card.Body><Card.Title>{location.name}</Card.Title> {location.trivia} - {location.trivia} </Card.Body>
-                        <p><img src={location.inhabitants[0].images} /> - {location.inhabitants[0].about}</p>
+                        <p><img src={location.inhabitants[0].image1} /> - {location.inhabitants[0].about}</p>
                       </Card>
                     </Link>
                   </Col>
@@ -58,6 +58,7 @@ const LocationIndex = () => {
             :
             <h1>
               {/* {error ? <img src={errorImg} /> : <img src={spinnerImg} />} */}
+              {error ? 'no comments' : 'loading'}
             </h1>
           }
 
