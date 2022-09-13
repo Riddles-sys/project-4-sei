@@ -2,8 +2,6 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getToken } from '../../auth/auth'
-import Container from 'react-bootstrap/Container'
-import Card from 'react-bootstrap/Card'
 
 
 
@@ -13,6 +11,8 @@ const UserProfile = () => {
 
   const [ profile, setProfile ] = useState([])
   const [ error, setError ] = useState(false)
+  const [ updatedUserProfile, setUpdatedUserProfile ] = useState([])
+  const [ newProfileImg, setNewProfileImg ] = useState([])
 
 
   useEffect(() => {
@@ -23,8 +23,6 @@ const UserProfile = () => {
           headers: { Authorization: `Bearer ${getToken()}` },
         })
         setProfile(data)
-        // setFavourites(data.favourites)
-        // console.log('favourites ------>', data.favourites)
         console.log('data from profile ---->', data)
         console.log('data from user profile----.>', data.profile_image)
       } catch (error) {
@@ -35,6 +33,10 @@ const UserProfile = () => {
 
     getProfile()
   }, [])
+
+
+  
+
 
   return (
     <section className='pt-16 bg-blueGray-50'>
@@ -64,6 +66,9 @@ const UserProfile = () => {
                     <i className='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400'></i>
                     {profile.likes}
                   </div>
+                  <button className='btn btn-danger'>
+                    <Link to='/editProfile'>Edit Profile</Link>
+                  </button>
                 </div>
               </div>
             </div>
