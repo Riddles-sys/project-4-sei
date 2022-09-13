@@ -5,6 +5,7 @@ import LocationSingle from './components/LocationSingle'
 import PageNavBar from './components/Navigation/PageNavBar'
 import Login from './components/users/Login'
 import UserProfile from './components/users/UserProfile'
+import EditProfile from './components/users/EditProfile'
 
 import { useEffect } from 'react'
 import axios from 'axios'
@@ -33,6 +34,7 @@ const App = () => {
           <Route path='/locations' element={<LocationIndex />} />
           <Route path='/locations/:locationId' element={<LocationSingle />} />
           <Route path='/profile' element={<UserProfile />} />
+          <Route path='/editProfile' element={<EditProfile />} />
           
         </Routes>
       </BrowserRouter>
