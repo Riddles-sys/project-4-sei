@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify'
+// import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import YoutubeEmbed from './YoutubeEmbed'
 
@@ -22,7 +22,7 @@ const LocationSingle = () => {
   const [ locations, setLocations ] = useState(null)
   const [ errors, setErrors ] = useState(false)
   const [ reviews, setReviews ] = useState([])
-  const [ liking, setLiking ] = useState([])
+  // const [ liking, setLiking ] = useState([])
   const [ likes, setLikes ] = useState([])
   const [formData, setFormData] = useState({
     text: '',
@@ -48,11 +48,12 @@ const LocationSingle = () => {
       console.log(data)
       setLocations(data)
       setReviews(data.reviews)
-      setLikes(data.likes)
+      setLikes(data.likes[0])
+      
       setOwner(data.owner)
       setLoading(false)
       console.log('owner  ---->', data.owner)
-      console.log('likes  ---->', data.likes)
+      console.log('likes  ---->', data.likes[0])
       console.log('data   ---->', data.reviews)
 
     } catch (error) {
@@ -96,21 +97,7 @@ const LocationSingle = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value })
   }
 
-  // Update reviews
-  const submitUpdateReview = async (event) => {
-    // event.preventDefault()
-    try {
-      console.log(getToken())
-      console.log('form data -->', formData)
-      const { data } = await axios.put(`/api/reviews/${event.target.name}/`, updateReview, headers())
-      getData()
-      setUpdateReview({ ...updateReview, text: '' }) 
-      console.log('update data ----->', data.reviews[0].text)
-    } catch (e) {
-      setErrors(e)
-      console.log(errors)
-    }
-  }
+
 
   // Delete comments
   const handleDelete = async (event) => {
@@ -133,7 +120,7 @@ const LocationSingle = () => {
     console.log('setUpdate')
   }
 
-  //! Likes
+  // //! Likes
 
   // const handleAddLike = async (event) => {
   //   // event.preventDefault()
@@ -141,11 +128,20 @@ const LocationSingle = () => {
   //     console.log(getToken())
   //     console.log('form data -->', formData)
 
-  //     const { data } = await axios.post(`/api/location/${locationId}`, headers())
-      
-  //     setLikes(data.likes)
-  //     window.location.reload()
 
+
+      
+  //     const { data } = await axios.get(`/api/locations/${locationId}`)
+  //     const userId = 4
+  //     data.likes.push(userId)
+  //     console.log('data log', data)
+  //     console.log('res 2--', data.likes)
+  //     console.log(headers())
+  //     const res = await axios.put(`/api/locations/${locationId}/`, data, headers())
+  //     // console.log('res', res)
+
+  //     setLikes(data.likes)
+   
   //     console.log('res-->', data)
 
   //   } catch (error) {
@@ -198,16 +194,14 @@ const LocationSingle = () => {
               </Col>
               
               {/* <div className='likes'>
-                <Button className='btn btn-primary' variant='primary' size='lg' onClick={(event) => {
-                  console.log({ likes })
-                  allLikes(event, likes ) 
-                } }>{locations.likes.length += 1}</Button>
-              </div>
-              <div className='dislike-button'>
+                <Button className='btn btn-primary' variant='primary' size='lg' onClick={handleAddLike}>
+                  Likes {likes.length}</Button>{console.log('likes ------------------>', likes)}
+              </div>  */}
+              {/* <div className='dislike-button'>
                 <Button className='btn btn-primary' variant='primary' size='lg' onClick={(event) => {
                   (event, likes ) 
                 } }>{locations.dislikes.length += 1}</Button>
-              </div> */}
+              </div>  */}
               {/* <div class="flex mx-auto items-center justify-center shadow-lg mt-56 mx-8 mb-4 max-w-lg">
                 <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2">
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -230,19 +224,7 @@ const LocationSingle = () => {
                     </form>
                 </div>
               </> */}
-              <form onSubmit={handleAddComment}>
-                <div className='mb-4 w-1/2 h-1/2 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600'>
-                  <div className='py-2 px-4 bg-white rounded-t-lg dark:bg-gray-600'>
-                    <label htmlFor='comment' className='sr-only'>Your comment</label>
-                    <textarea id='comment' rows='4' className='px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400' name='text' value={formData.text} maxLength='280' onChange={handleReview} placeholder='Write a comment...' required></textarea>
-                  </div>
-                  <div className='flex justify-between items-center py-2 px-3 border-t dark:border-gray-600'>
-                    <button type="submit" value="Add Comment" name={locationId} required className=" btn btn-primary inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-                    Post Review
-                    </button>
-                  </div>
-                </div>
-              </form>
+            
 
               {/* COMMENTS SECTION */}
               <form onSubmit={submitHandleEdit} >
@@ -257,8 +239,8 @@ const LocationSingle = () => {
                           return (                       
                           
                               
-                            <section key={id}>
-                              <h3 className='text-xl font-semibold pt-5 pb-3'>{review.owner.username}</h3>
+                            <section key={id} >
+                              <h3 className='text-xl font-semibold pt-2 pb-2 border-t dark:border-gray-600'>{review.owner.username}</h3>
                               <p>
                                 {review.text}
                               </p>
@@ -283,6 +265,19 @@ const LocationSingle = () => {
               { errors ? <h2>Something went wrong.</h2> : <p>Loading</p>}
             </h2> 
           }
+          <form onSubmit={handleAddComment}>
+            <div className='mb-4 w-1/2 h-1/2 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 pt-2'>
+              <div className='py-2 px-4 bg-white rounded-t-lg dark:bg-gray-600'>
+                <label htmlFor='comment' className='sr-only'>Your comment</label>
+                <textarea id='comment' rows='4' className='px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400' name='text' value={formData.text} maxLength='280' onChange={handleReview} placeholder='Write a comment...' required></textarea>
+              </div>
+              <div className='flex justify-between items-center py-2 px-3 border-t dark:border-gray-600 '>
+                <button type="submit" value="Add Comment" name={locationId} required className=" btn btn-primary inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+                Post Review
+                </button>
+              </div>
+            </div>
+          </form>
         </Row>
       </Container>
     </>

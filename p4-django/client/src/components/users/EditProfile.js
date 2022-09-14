@@ -54,7 +54,6 @@ const EditProfile = () => {
     formData.append('file', imageSelect)
     formData.append('upload_preset', 'yfkzazic') 
     const { data } = await axios.post('https://api.cloudinary.com/v1_1/riddles/image/upload', formData)
-    // ! this is my (Ridwan's) login for the cloudinary 
     setNewProfileImg(data.url)
     setUpdatedUserProfile({ ...updatedUserProfile, profileImg: data.url })
   }

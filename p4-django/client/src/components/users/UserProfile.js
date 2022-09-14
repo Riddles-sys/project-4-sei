@@ -12,7 +12,6 @@ const UserProfile = () => {
 
   const [ profile, setProfile ] = useState(null)
   const [ error, setError ] = useState(false)
-  // const [ updatedUserProfile, setUpdatedUserProfile ] = useState([])
 
 
 
@@ -54,7 +53,7 @@ const UserProfile = () => {
                     <div className='flex flex-wrap justify-center'>
                       {/* <div className='w-full px-4 flex justify-center'> */}
                       <div className='relative'>
-                        {/* <div><img src={profile.profile_image}/></div> */}
+                        <div><img src={profile.profile_image}/></div>
                       </div>
                     </div>
                   </div>
@@ -70,8 +69,11 @@ const UserProfile = () => {
                       <i className='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400'></i>
                       {profile.likes}
                     </div>
-                    <button className='btn btn-warning mb-4'>
+                    <button className='btn btn-warning mb-4 mr-4'>
                       <Link to={`/editProfile/${profile.id}`}>Edit Profile</Link>
+                    </button>
+                    <button className='btn btn-warning mb-4'>
+                      <Link to='/new-location'>Add New Location</Link>
                     </button>
                   </div>
                 </div>

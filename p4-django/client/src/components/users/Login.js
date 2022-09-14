@@ -5,9 +5,6 @@ import { getText } from '../../auth/auth'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-// Bootstrap Components
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
