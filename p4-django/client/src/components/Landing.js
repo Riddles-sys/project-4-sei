@@ -10,7 +10,7 @@ const Landing = () => {
       <img className='w-100' src={onemap} useMap="#image-map"/>
 
       <map name="image-map">
-        <area target="" alt="The Shire" title="The Shire" href="http://localhost:3000/locations/1" coords="72,191,227,94" shape="rect"/>
+        <area target="" alt="The Shire" title="The Shire" href="http://localhost:3000/locations/2/" coords="72,191,227,94" shape="rect"/>
       </map>
     </div>
   )

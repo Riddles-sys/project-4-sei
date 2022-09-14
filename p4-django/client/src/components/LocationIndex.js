@@ -45,7 +45,7 @@ const LocationIndex = () => {
                 return (
                   <Col className="mb-4" md='3' key={id}>
                     <Link className="mb-4" to={`/locations/${id}`}>
-                      <Card className='card ship'>
+                      <Card className='locations-card hover:grid'>
                         <Card.Img variant='top' className='w-100' src={location.location_image_1}></Card.Img>
                         <Card.Body><Card.Title>{location.name}</Card.Title> {location.trivia} - {location.trivia} </Card.Body>
                         <p><img src={location.inhabitants[0].image1} /> - {location.inhabitants[0].about}</p>

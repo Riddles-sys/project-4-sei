@@ -2,11 +2,12 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { getToken } from '../../auth/auth'
 import Container from 'react-bootstrap/Container'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import  Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import { Button } from 'react-bootstrap'
+
 
 
 const EditProfile = () => {
@@ -25,6 +26,8 @@ const EditProfile = () => {
   const [ updatedUserProfile, setUpdatedUserProfile ] = useState('')
   const [ newProfileImg, setNewProfileImg ] = useState('')
 
+  const { userId } = useParams()
+
   useEffect(() => {
     const getProfile = async () => {
       try {
@@ -35,7 +38,6 @@ const EditProfile = () => {
         console.log(data)
         setUserProfile(data)
         console.log('data loading user------->', setUserProfile(data))
-        setUserProfile(data)
         setUpdatedUserProfile(data)
         // !why is it undefined
       } catch (error) {
@@ -60,13 +62,14 @@ const EditProfile = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      const { data } = await axios.put('/api/auth/profile/', updatedUserProfile, {
+      const { data } = await axios.put(`/api/auth/profile/${userId}/`, updatedUserProfile, {
         headers: {
           Authorization: `Bearer ${getToken()}`,
         },
       })
+    
       console.log(data)
-      navigate('/')
+      navigate('/profile')
     } catch (error) {
       setErrors(error.message)
       console.log(error.message)

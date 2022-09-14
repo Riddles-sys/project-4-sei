@@ -21,7 +21,7 @@ const App = () => {
   })
 
   return (
-    <div className='container mx-auto'>
+    <div className='container'>
       <h1 className="text-3xl font-bold underline">
         Hello world what is up!
       </h1>
@@ -34,7 +34,7 @@ const App = () => {
           <Route path='/locations' element={<LocationIndex />} />
           <Route path='/locations/:locationId' element={<LocationSingle />} />
           <Route path='/profile' element={<UserProfile />} />
-          <Route path='/editProfile' element={<EditProfile />} />
+          <Route path='/editProfile/:userId' element={<EditProfile />} />
           
         </Routes>
       </BrowserRouter>
