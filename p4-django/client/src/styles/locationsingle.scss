@@ -6,9 +6,14 @@
 }
 
 .show {
-  display: flex;
+  display: column;
 }
 
 .hide {
   display: none;
+}
+
+* {
+  text-decoration: none;
+  a { color: inherit; }; 
 }

@@ -5,9 +5,6 @@ import { getText } from '../../auth/auth'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-// Bootstrap Components
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -104,8 +101,8 @@ const Login = () => {
 
   // export default Login
   return (
-    <div>
-      <div className="login-wrapper w-full flex justify-center m-4">
+    <>
+      <div className="login-wrapper w-full flex justify-center">
         <ToastContainer />
         <form className="login-form w-200 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={onSubmit}>
           <div className="mb-4">
@@ -134,7 +131,7 @@ const Login = () => {
         <p className="text-center text-gray-500 text-xs">
         </p>
       </div>
-    </div>
+    </>
   )
 }
 export default Login

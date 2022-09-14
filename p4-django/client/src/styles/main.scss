@@ -4,9 +4,10 @@
 
 @import './locationsingle.scss';
 @import './loginpage.scss';
+@import './landing.scss';
 
 * {
-  box-sizing: border-box;
+  box-sizing: 0;
   text-decoration: none;
   a { color: inherit; }; 
 }
