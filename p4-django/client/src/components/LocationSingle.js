@@ -35,12 +35,12 @@ const LocationSingle = () => {
     location: parseInt(locationId),
   })
 
-  const allLikes = (event, likes) => {
-    setLiking(liking + 1)
-    if (event.target.value === likes) {
-      setLiking(likes += 1)
-    }
-  }
+  // const allLikes = (event, likes) => {
+  //   setLiking(liking + 1)
+  //   if (event.target.value === likes) {
+  //     setLiking(likes += 1)
+  //   }
+  // }
 
   const getData = async () => {
     try {
@@ -135,27 +135,27 @@ const LocationSingle = () => {
 
   //! Likes
 
-  const handleAddLike = async (event) => {
-    // event.preventDefault()
-    try {
-      console.log(getToken())
-      console.log('form data -->', formData)
+  // const handleAddLike = async (event) => {
+  //   // event.preventDefault()
+  //   try {
+  //     console.log(getToken())
+  //     console.log('form data -->', formData)
 
-      const { data } = await axios.post(`/api/location/${locationId}`, headers())
+  //     const { data } = await axios.post(`/api/location/${locationId}`, headers())
       
-      setLikes(data.likes)
-      window.location.reload()
+  //     setLikes(data.likes)
+  //     window.location.reload()
 
-      console.log('res-->', data)
+  //     console.log('res-->', data)
 
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   const [ loading, setLoading ] = useState(true)
 
-  if (errors) return <h2>Something went wrong.</h2>
+  if (errors) return <h2>You are are not the authorised user. <Link></Link></h2>
   if (loading) return <h2>loading</h2>
 
   return (
@@ -208,57 +208,73 @@ const LocationSingle = () => {
                   (event, likes ) 
                 } }>{locations.dislikes.length += 1}</Button>
               </div> */}
-
+              {/* <div class="flex mx-auto items-center justify-center shadow-lg mt-56 mx-8 mb-4 max-w-lg">
+                <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2">
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                      <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
+                      <div class="w-full md:w-full px-3 mb-2 mt-2">
+                          <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="body" placeholder='Type Your Comment' required></textarea>
+                      </div>
+                      <div class="w-full md:w-full flex items-start md:w-full px-3">
+                          <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+                            <svg fill="none" class="w-5 h-5 text-gray-600 mr-1" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <p class="text-xs md:text-sm pt-px">Some HTML is okay.</p>
+                          </div>
+                          <div class="-mr-1">
+                            <input type='submit' class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100" value='Post Comment' />
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+              </> */}
+              <form onSubmit={handleAddComment}>
+                <div className='mb-4 w-1/2 h-1/2 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600'>
+                  <div className='py-2 px-4 bg-white rounded-t-lg dark:bg-gray-600'>
+                    <label htmlFor='comment' className='sr-only'>Your comment</label>
+                    <textarea id='comment' rows='4' className='px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400' name='text' value={formData.text} maxLength='280' onChange={handleReview} placeholder='Write a comment...' required></textarea>
+                  </div>
+                  <div className='flex justify-between items-center py-2 px-3 border-t dark:border-gray-600'>
+                    <button type="submit" value="Add Comment" name={locationId} required className=" btn btn-primary inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+                    Post Review
+                    </button>
+                  </div>
+                </div>
+              </form>
 
               {/* COMMENTS SECTION */}
-              <form onSubmit={handleAddComment} >
+              <form onSubmit={submitHandleEdit} >
                 <div className='grid grid-cols-3'>
                   <div className='col-span-2'>
-                    <div className={update && owner === reviews.owner ? 'review-display' : 'review-display show'}>
-                      <h3>Reviews</h3>
-                      { reviews.length > 0
+
+                    <h3>Reviews</h3>
+                    { reviews.length > 0
                         &&
                         reviews.map(review => {
                           const { id, owner, text } = review
                           return (                       
-                           
+                          
                               
                             <section key={id}>
                               <h3 className='text-xl font-semibold pt-5 pb-3'>{review.owner.username}</h3>
                               <p>
                                 {review.text}
                               </p>
-                              
-                      
-                            
+                              <button className='btn btn-warning' name={review.id} onClick={handleDelete}> 
+                                Delete
+                              </button>
+                              <Link to={`/edit-review/${locationId}/${review.id}`} className='btn dark'>
+                                <button className='btn btn-warning'>
+                                Edit </button></Link>
                               <div className="buttons">
-                    
-                              </div>
-                              <div className='mb-4 w-1/2 h-1/2 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600'>
-                                <div className='py-2 px-4 bg-white rounded-t-lg dark:bg-gray-600'>
-                                  <label htmlFor='comment' className='sr-only'>Your comment</label>
-                                  <textarea id='comment' rows='4' className='px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400' name='text' value={formData.text} maxLength='280' onChange={handleReview} placeholder='Write a comment...' required></textarea>
-                                </div>
-                                <div className='flex justify-between items-center py-2 px-3 border-t dark:border-gray-600'>
-                                  <button type="submit" value="Add Comment" name={locationId} required className=" btn btn-primary inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-                                  Post Review
-                                  </button>
-                                  <button name={review.id} onClick={handleDelete}> 
-                                    Delete
-                                  </button>
-                                  <button name={review.id} value={updateReview.text} onClick={submitHandleEdit}>
-                                    Edit
-                                  </button>
-                                </div>
                               </div>
                             </section>
                           )
                         })
-                      }
-                    </div>
-                    
+                    }
                   </div>
-                  {/* <form onSubmit={handleAddComment} > */}
                 </div>
               </form>
             </>
