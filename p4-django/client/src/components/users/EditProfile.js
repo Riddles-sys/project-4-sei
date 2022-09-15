@@ -55,7 +55,8 @@ const EditProfile = () => {
     formData.append('upload_preset', 'yfkzazic') 
     const { data } = await axios.post('https://api.cloudinary.com/v1_1/riddles/image/upload', formData)
     setNewProfileImg(data.url)
-    setUpdatedUserProfile({ ...updatedUserProfile, profileImg: data.url })
+    console.log('photo data', data)
+    setUpdatedUserProfile({ ...updatedUserProfile, profile_image: data.url })
   }
 
   const handleSubmit = async (event) => {
@@ -92,7 +93,7 @@ const EditProfile = () => {
               <Form.Control type="text" name="username" placeholder="Edit display name" value={updatedUserProfile.username} onChange={handleChange} />
             </Form.Group>
             <Col>
-              <img className='w-100' src={userProfile.profileImg} alt={updatedUserProfile.userName} />
+              <img className='w-100' src={userProfile.profile_image} alt={updatedUserProfile.username} />
             </Col>
             <hr />
             <Form.Group className="mb-3" >
