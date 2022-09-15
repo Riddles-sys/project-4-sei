@@ -1,3 +1,4 @@
+from distutils.log import error
 from urllib import request
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -62,26 +63,15 @@ class ReviewDetailView(APIView):
     review_to_delete.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
 
-  def put(self, request, pk):
-      review_to_update = self.get_review(pk=pk)
-      # request.data['owner'] = request.user.owner
-      review_to_update = ReviewSerializer(data=request.data)
-      try:
-        # if review_to_update.owner != request.user:
-        #     raise PermissionDenied('Unauthorised Access')
-        review_to_update.is_valid(True)
+  def put(self, request, pk, format=None):
+      review_to_edit = self.get_review(pk)
+      request.data['owner'] = request.user.id
+      review_to_update = ReviewSerializer(review_to_edit, data=request.data)
+      if review_to_update.is_valid():
         review_to_update.save()
         return Response(review_to_update.data, status=status.HTTP_201_CREATED)
-      except Exception as e:
-        print(e)
-        return Response(e.__dict__ if e.__dict__ else str(e), status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+      print('error review to update ----------->', review_to_update.errors)
+      return Response(review_to_update.errors, status=status.HTTP_400_BAD_REQUEST)
 
-  # def put(self, request, pk):
-  #     review_update = self.get_review(pk=pk)
-  #     try:
-  #         test_put =  ReviewSerializer(review_update, data=request.data)
-  #         test_put.is_valid(raise_exception=True)
-  #         test_put.save()
-  #     except:
-  #         return Response({"message : Its working "})
+
 

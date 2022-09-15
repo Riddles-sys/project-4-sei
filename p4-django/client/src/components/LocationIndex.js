@@ -36,7 +36,7 @@ const LocationIndex = () => {
           Locations Index
         </p>
       </div> */}
-      <Container as='main'>
+      <Container as='main' className='landing-index'>
         <h1>Locations</h1>
         <Row>
           {locations.length > 0 ?
@@ -46,7 +46,7 @@ const LocationIndex = () => {
                 return (
                   <Col className="mb-4" md='3' key={id}>
                     <Link className="mb-4" to={`/locations/${id}`}>
-                      <Card className='locations-card hover:grid'>
+                      <Card className='w-100 h-100 locations-card hover:grid'>
                         <Card.Img variant='top' className='w-100' src={location.location_image_1}></Card.Img>
                         <Card.Title>{location.name}</Card.Title>
                       </Card>

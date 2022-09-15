@@ -23,7 +23,7 @@ urlpatterns = [
     path('api/reviews/', include('reviews.urls')),
     path('api/auth/', include('jwt_auth.urls')),
     path('api/creatures/', include('creatures.urls')),
-    path('api/inhabitants/', include('inhabitants.urls')),
-    # path('api/posts/', include('posts.urls'))
+    path('api/inhabitants/', include('inhabitants.urls'))
+    # path('api/favourites/', include('locations.urls'))
     # path('api/profile/', include('jwt_auth.urls'))
 ]

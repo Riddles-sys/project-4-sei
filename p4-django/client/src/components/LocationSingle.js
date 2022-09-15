@@ -10,7 +10,10 @@ import { useNavigate } from 'react-router-dom'
 // import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import YoutubeEmbed from './YoutubeEmbed'
-
+// import { Carousel } from 'react-bootstrap'
+// import React, { Component } from 'react'
+// import ReactDOM from 'react-dom'
+import { Carousel } from 'react-responsive-carousel'
 import { getToken, userIsAuthenticated } from '../auth/auth'
 
 const LocationSingle = () => {
@@ -33,13 +36,6 @@ const LocationSingle = () => {
     text: '',
     location: parseInt(locationId),
   })
-
-  // const allLikes = (event, likes) => {
-  //   setLiking(liking + 1)
-  //   if (event.target.value === likes) {
-  //     setLiking(likes += 1)
-  //   }
-  // }
 
   const getData = async () => {
     try {
@@ -76,7 +72,7 @@ const LocationSingle = () => {
       console.log('form data -->', formData)
 
       const { data } = await axios.post('/api/reviews/', formData, headers() )
-      getData()
+      window.location.reload()
       setLocation(data)
       setFormData({ ...formData, text: '' })
       console.log('res-->', data)
@@ -141,29 +137,99 @@ const LocationSingle = () => {
         <Row>
           { location ? 
             <>
-
+       
               <h1>{location.name}</h1>
-        
+         
               <Col md='6'>
-                <img className='w-100' src={location.location_image_1} alt={location.name} />
+                <Carousel showArrows={true} >
+                  {/* <div className='youtube'>
+                    <YoutubeEmbed embedId={location.youtube_id} />
+                  </div> */}
+                  <div>
+                    <img src={location.location_image_1} />
+                    <p className="legend">{location.name}</p>
+                  </div>
+                  <div>
+                    <img src={location.location_image_2} />
+                    <p className="legend">{location.name}</p>
+                  </div>
+                  <div>
+                    <img src={location.location_image_3} />
+                    <p className="legend">{location.name}</p>
+                  </div>
+                </Carousel>
+                {/* <img className='w-100' src={location.location_image_1} alt={location.name} /> */}
               </Col>
               <Col md='6'>
                 <h2>History</h2>
                 <p>{location.history}</p>
+                <h3>Description</h3>
+                <p>{location.trivia}</p>
                 <hr />
-                <h2>Creatures</h2>
+                <h3>Risk Level</h3>
+                <p>{location.risk}</p>
+                <hr />
+                <h3>Inhabitants</h3>
+                { location.inhabitants.length > 0 &&
+                <>
+                  <p>{location.inhabitants.name}</p>
+                  <hr />
+                  <Col>
+                    <Carousel className='w-100 h-100' showArrows={true} >
+                      {/* <div className='youtube'>
+                        <YoutubeEmbed embedId={location.youtube_id} />
+                      </div> */}
+                      <div>
+                        <img src={location.inhabitants[0].image1} />
+                        <p className="legend">{location.name}</p>
+                      </div>
+                      <div>
+                        <img src={location.inhabitants[0].image2} />
+                        <p className="legend">{location.name}</p>
+                      </div>
+                      <div>
+                        <img src={location.inhabitants[0].image3} />
+                        <p className="legend">{location.name}</p>
+                      </div>
+                    </Carousel>
+                  </Col>
+                </>
+                }
+                <h3>Creatures</h3>
                 { location.creatures.length > 0 &&
                 <>
                   <p>{location.creatures.name}</p>
                   <hr />
-                  <Col md='6'>
+                  <Col>
+                    <Carousel className='w-100 h-100' showArrows={true} >
+                      {/* <div className='youtube'>
+                        <YoutubeEmbed embedId={location.youtube_id} />
+                      </div> */}
+                      <div>
+                        <img src={location.creatures[0].image1} />
+                        <p className="legend">{location.name}</p>
+                      </div>
+                      <div>
+                        <img src={location.creatures[0].image2} />
+                        <p className="legend">{location.name}</p>
+                      </div>
+                      <div>
+                        <img src={location.creatures[0].image3} />
+                        <p className="legend">{location.name}</p>
+                      </div>
+                    </Carousel>
+                  </Col>
+                  {/* <Col md='6'>
                     <img className='w-100' src={location.creatures[0].image1} alt={location.name} />
                   </Col>
+                  <Col md='6'>
+                    <img className='w-100' src={location.creatures[0].image2} alt={location.name} />
+                  </Col>
+                  <Col md='6'>
+                    <img className='w-100' src={location.creatures[0].image3} alt={location.name} />
+                  </Col> */}
                 </>
                 }
-                <h2><span></span>Description</h2>
-                <p>{location.trivia}</p>
-                <hr />
                 {location.youtube_id && 
                 <Col className='title-media mb-4 justify-content-center mt-4'>
                   <div className='youtube'>
@@ -172,7 +238,7 @@ const LocationSingle = () => {
                 </Col>
                 }
                 <hr />
-                <Link to='/location' className='btn dark'>Back to all Locations</Link>
+                <Link to='/locations' className='btn dark'>Back to all Locations</Link>
               </Col>
               {/* COMMENTS SECTION */}
               <form onSubmit={submitHandleEdit} >

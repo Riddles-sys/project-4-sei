@@ -6,7 +6,7 @@ from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 class Location(models.Model):
   name = models.CharField(max_length=150, default=None)
-  history = models.CharField(max_length=400, default=None)
+  history = models.CharField(max_length=1000, default=None)
   trivia = models.CharField(max_length=200, default=None)
   location_image_1 = models.CharField(max_length=300, default=None)
   location_image_2 = models.CharField(max_length=300, default=None)

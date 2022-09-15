@@ -1,1 +1,63 @@
 [
+{
+  "model": "locations.location",
+  "pk": 2,
+  "fields": {
+    "name": "The Shire",
+    "history": "Birth place of Bilbo Bagins",
+    "trivia": "The Shire is protected by the Dúnedain Rangers, who regularly patrol The Shire's borders. These Rangers are the last remnants of the  Dúnedain of Arnor, the old Kingdom in which The Shire is located.",
+    "location_image_1": "https://img.etimg.com/photo/msid-58768239,quality-100/.jpg",
+    "location_image_2": "https://media.cntraveller.com/photos/611be79fd5b6f5a4a3deec79/4:3/w_1704,h_1278,c_limit/hobbiton.jpg",
+    "location_image_3": "https://cdn.pixabay.com/photo/2020/06/10/22/21/hobbiton-5284514_1280.jpg",
+    "youtube_id": "510o9PRy_0o",
+    "risk": "Low Risk",
+    "likes": [
+      2
+    ],
+    "dislikes": [
+      2
+    ],
+    "favourites": [
+      1
+    ],
+    "creatures": [
+      1
+    ],
+    "inhabitants": [
+      1
+    ]
+  }
+},
+{
+  "model": "locations.location",
+  "pk": 3,
+  "fields": {
+    "name": "Rivendell",
+    "history": "Rivendell, also known as Imladris in Sindarin, was an Elven town and the house of Elrond located in Middle-earth. It is described as \"The Last Homely House East of the Sea\" in reference to Valinor, which was west of the Great Sea in Aman.",
+    "trivia": "When Aragorn was a child, his father Arathorn was struck down and killed in battle with orcs. Soon after, Aragorn was sent to Rivendell, where he was taken care of by Elrond.",
+    "location_image_1": "https://img.etimg.com/photo/msid-58768239,quality-100/.jpg",
+    "location_image_2": "https://media.cntraveller.com/photos/611be79fd5b6f5a4a3deec79/4:3/w_1704,h_1278,c_limit/hobbiton.jpg",
+    "location_image_3": "https://cdn.pixabay.com/photo/2020/06/10/22/21/hobbiton-5284514_1280.jpg",
+    "youtube_id": "BOAS5SGcYF4",
+    "risk": "Low Risk",
+    "likes": [
+      3
+    ],
+    "dislikes": [
+      2
+    ],
+    "favourites": [
+      3,
+      1,
+      2,
+      5
+    ],
+    "creatures": [
+      1
+    ],
+    "inhabitants": [
+      1
+    ]
+  }
+}
+]

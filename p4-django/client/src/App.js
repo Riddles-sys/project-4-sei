@@ -9,6 +9,8 @@ import EditProfile from './components/users/EditProfile'
 import EditReview from './components/EditReview'
 import Maps from './components/Maps'
 import NewLocation from './components/NewLocation'
+import NotFound from './components/NotFound'
+import Footer from './components/Footer'
 
 import { useEffect } from 'react'
 import axios from 'axios'
@@ -41,8 +43,9 @@ const App = () => {
         <Route path='/edit-review/:locationId/:reviewId' element={<EditReview />} />
         <Route path='/maps' element={<Maps />} />
         <Route path='/new-location' element={<NewLocation />} />
-
+        <Route path='*' element={<NotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

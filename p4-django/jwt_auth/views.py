@@ -92,14 +92,19 @@ class UserProfile(APIView):
     #       return Response(e.__dict__ if e.__dict__ else str(e), status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 
-    
-    def put(self, request, pk):
-        profile_to_update = self.get_user(pk=pk)
-        profile_to_update = UserSerializer(data=request.data)
+class EditProfile(APIView):   
+    permission_classes = (IsAuthenticated,)
+
+    def get_user(self, pk):
         try:
-          profile_to_update.is_valid(True)
-          profile_to_update.save()
-          return Response(profile_to_update.data, status=status.HTTP_201_CREATED)
-        except Exception as e:
-          print(e)
-          return Response(e.__dict__ if e.__dict__ else str(e), status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+            return User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            raise PermissionDenied(detail="Invalid Credentials")
+
+    def put(self, request, pk, format=None):
+        profile_to_update = self.get_user(pk)
+        updating_profile = UserSerializer(profile_to_update, data=request.data)
+        if updating_profile.is_valid(True):
+          updating_profile.save()
+          return Response(updating_profile.data, status=status.HTTP_201_CREATED)
+        return Response(updating_profile.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)

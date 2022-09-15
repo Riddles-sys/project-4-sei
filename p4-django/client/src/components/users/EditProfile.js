@@ -135,12 +135,10 @@ const EditProfile = () => {
               <Form.Control type='file' id='image' className='input' onChange={(event) => {
                 setImageSelected(event.target.files[0])
               }} />
-              <Button onClick={uploadImage}>Upload image</Button>
+              <button className='btn btn-primary' onClick={uploadImage}>Upload image</button>
             </Form.Group>
             <hr />
-            <Button variant='primary' type='submit'>Submit</Button>
-            <hr />
-            {/* <Link to={`/users/${userId}`} className='btn dark'>Cancel</Link> */}
+            <button className='btn btn-primary' type='submit'>Submit</button>
             <hr />
           </Form>
         </>

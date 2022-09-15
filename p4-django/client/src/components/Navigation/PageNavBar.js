@@ -8,6 +8,7 @@ import NavBar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import NavImage from '../../images/home.png'
 
 const PageNavBar = () => {
   const navigate = useNavigate()
@@ -33,7 +34,8 @@ const PageNavBar = () => {
       <ToastContainer />
       <Container>
         <NavBar.Brand as={Link} to='/'>
-          <span className='logo fw-bold'>Middle Earth Tours</span>
+          <img src={NavImage} alt='nav home' className='w-25 logo-image' />
+          {/* <span className='logo fw-bold'>Middle Earth Tours</span> */}
         </NavBar.Brand>
         {userIsAuthenticated() && loginTextDisplay()}
         <NavBar.Toggle aria-controls='basic-navbar-nav'></NavBar.Toggle>

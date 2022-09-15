@@ -39,7 +39,7 @@ const UserProfile = () => {
 
 
   return (
-    <section className='pt-16 bg-blueGray-50'>
+    <section className='profile-page pt-16 bg-blueGray-50'>
       <div className='w-full lg:w-4/12 px-4 mx-auto'>
         { profile ? 
           <>
@@ -52,7 +52,7 @@ const UserProfile = () => {
                   <div className='px-6'>
                     <div className='flex flex-wrap justify-center'>
                       {/* <div className='w-full px-4 flex justify-center'> */}
-                      <div className='relative'>
+                      <div className='relative mt-4'>
                         <div><img src={profile.profile_image}/></div>
                       </div>
                     </div>
