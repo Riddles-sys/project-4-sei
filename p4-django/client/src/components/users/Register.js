@@ -14,6 +14,8 @@ const Register = () => {
   //! State
   const [formData, setFormData] = useState({
     first_name: '',
+    last_name: '',
+    bio: '',
     email: '',
     username: '',
     password: '',
@@ -72,17 +74,28 @@ const Register = () => {
       {/* <Row> */}
       <form onSubmit={handleSubmit} className="justify-content-between">
         <h3 className="text-center">Register</h3>
-        {/* <Row>
+        <Row>
           <label htmlFor="first_name">Name</label>
           <input
             onInput={handleChange}
             type="text"
             name="first_name"
             value={formData.first_name}
-            placeholder="Name"
+            placeholder="First Name"
             required
           />
-        </Row> */}
+        </Row>
+        <Row>
+          <label htmlFor="last_name">Name</label>
+          <input
+            onInput={handleChange}
+            type="text"
+            name="last_name"
+            value={formData.last_name}
+            placeholder="Last Name"
+            required
+          />
+        </Row>
         {/* Email */}
         <Row>
           <label htmlFor="username">Username</label>
@@ -105,6 +118,17 @@ const Register = () => {
             name="email"
             value={formData.email}
             placeholder="Email"
+            required
+          />
+        </Row>
+        <Row>
+          <label htmlFor="bio">Bio</label>
+          <input
+            onInput={handleChange}
+            type="text"
+            name="bio"
+            value={formData.bio}
+            placeholder="Name"
             required
           />
         </Row>
