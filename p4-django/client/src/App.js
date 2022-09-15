@@ -11,6 +11,9 @@ import Maps from './components/Maps'
 import NewLocation from './components/NewLocation'
 import NotFound from './components/NotFound'
 import Footer from './components/Footer'
+import AboutMe from './components/users/AboutMe'
+import Creatures from './components/extras/Creatures'
+import Inhabitants from './components/extras/Inhabitants'
 
 import { useEffect } from 'react'
 import axios from 'axios'
@@ -26,10 +29,6 @@ const App = () => {
   })
 
   return (
-    // <div className='container'>
-    //   <h1 className="text-3xl font-bold underline">
-    //     Hello world what is up!
-    //   </h1>
     <BrowserRouter>
       <PageNavBar />
       <Routes>
@@ -43,6 +42,9 @@ const App = () => {
         <Route path='/edit-review/:locationId/:reviewId' element={<EditReview />} />
         <Route path='/maps' element={<Maps />} />
         <Route path='/new-location' element={<NewLocation />} />
+        <Route path='/creatures' element={<Creatures />} />
+        <Route path='/inhabitants' element={<Inhabitants />} />
+        <Route path='/about-me' element={<AboutMe />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />

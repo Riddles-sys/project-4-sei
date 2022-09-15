@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import { Container, Row, Col, Card } from 'react-bootstrap'
-
+import loaderImg from '../images/loader.gif'
 
 
 const LocationIndex = () => {
@@ -58,7 +58,7 @@ const LocationIndex = () => {
             :
             <h1>
               {/* {error ? <img src={errorImg} /> : <img src={spinnerImg} />} */}
-              {error ? 'no comments' : 'loading'}
+              <h1 className='text-center'>{error ? 'no comments' : <img src={loaderImg} />}</h1>
             </h1>
           }
 

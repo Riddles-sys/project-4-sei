@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getToken } from '../../auth/auth'
 import { Container } from 'react-bootstrap'
+import loaderImg from '../../images/loader.gif'
 
 
 
@@ -89,7 +90,7 @@ const UserProfile = () => {
           </>
           :
           <h2 className='text-center'>
-            {error ? 'user data' : 'loading'}
+            <h1 className='text-center'>{error ? 'user data' : <img src={loaderImg} />}</h1>
           </h2>
         }
       </div>

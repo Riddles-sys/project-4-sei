@@ -4,21 +4,22 @@ import mainImage from '../images/hobbit-home.gif'
 const Landing = () => {
   return (
     <section className='landing-page'>
-      <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
+      <div className="container mx-auto bg-transparent rounded-xl shadow border p-10">
         <div>
-          <div>
+          <div className='entry'>
             <h1 className="text-3xl text-gray-700 font-bold mb-5">
               Welcome to Middle Earth Tours
             </h1>
           </div>
-          <div>
+          <div className='enter'>
             <p> Where adventure awaits.</p>
-            
-            <button className='btn btn-warning'><Link to='/locations'>Discover</Link></button>
           </div>
+          
         </div>
-        <img src={mainImage} alt='opening door gif' />
-
+        <div className='enter-button'>
+          <img src={mainImage} alt='opening door gif' />
+          <button className='landing-btn btn btn-success'><Link to='/locations'>Discover</Link></button>
+        </div>
       </div>
     </section>
   )

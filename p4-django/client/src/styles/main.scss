@@ -7,6 +7,8 @@
 @import './Landing.scss';
 @import './Register.scss';
 @import './Footer.scss';
+@import './AboutMe.scss';
+@import './NotFound.scss';
 
 * {
   box-sizing: 0;
@@ -21,7 +23,7 @@
 }
 
 
-.notfound {
+.notFound {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,3 +38,4 @@
 .maps-page {
   height: 100vh;
 }
+

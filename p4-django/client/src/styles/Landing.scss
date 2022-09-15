@@ -1,4 +1,23 @@
 .landing-page {
   height: 100vh;
+  background-repeat: none;
+  background-size: cover;
+  background-image: url(../images/giphy.gif);
+  .entry {
+    display: flex;
+    justify-content: flex-end;
+    // flex-direction: inherit;
+  }
+  .enter{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .enter-button {
+    display: flex;
+    justify-content: space-between;
+    .landing-btn {
+      height: 3rem;
+    }
+  }
 }
 

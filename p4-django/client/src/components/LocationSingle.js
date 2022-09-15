@@ -5,14 +5,11 @@ import axios from 'axios'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
 import { useNavigate } from 'react-router-dom'
-// import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import YoutubeEmbed from './YoutubeEmbed'
-// import { Carousel } from 'react-bootstrap'
-// import React, { Component } from 'react'
-// import ReactDOM from 'react-dom'
+import loaderImg from '../images/loader.gif'
+
 import { Carousel } from 'react-responsive-carousel'
 import { getToken, userIsAuthenticated } from '../auth/auth'
 
@@ -23,8 +20,6 @@ const LocationSingle = () => {
 
   const [ location, setLocation ] = useState(null)
   const [ errors, setErrors ] = useState(false)
-  const [ reviews, setReviews ] = useState([])
-  // const [ liking, setLiking ] = useState([])
   const [ likes, setLikes ] = useState([])
   const [formData, setFormData] = useState({
     text: '',
@@ -276,7 +271,7 @@ const LocationSingle = () => {
             </>
             :
             <h2 className='text-center'>
-              { errors ? <h2> Something went wrong.</h2> : <p>Loading</p> }
+              <h1 className='text-center'>{ errors ? <h2> Something went wrong.</h2> : <img src={loaderImg} /> }</h1>
             </h2> 
           }
           

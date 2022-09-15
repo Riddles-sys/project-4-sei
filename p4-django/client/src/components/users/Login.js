@@ -77,15 +77,11 @@ const Login = () => {
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value='Login'>
               Sign In
             </button>
-            {/* <p className='text-danger my-2'>{error.data.message}</p> */}
-            {/* <p className="text-center mb-0 mt-3">Not yet registered?</p>
-            <p className="text-center mb-0">
-              <Link to="/register">Register</Link>
-            </p> */}
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              <Link to="/register">Not registered?</Link>
+            </button>
           </div>
         </form>
-        <p className="text-center text-gray-500 text-xs">
-        </p>
       </div>
     </>
   )

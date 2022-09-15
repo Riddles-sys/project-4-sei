@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import  Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import { Button } from 'react-bootstrap'
+import loaderImg from '../../images/loader.gif'
 
 
 
@@ -144,7 +145,7 @@ const EditProfile = () => {
         </>
         :
         <h2 className='text-center'>
-          { errors ? 'Something went wrong. Please try again later' : 'spinner' }
+          { errors ? 'Something went wrong. Please try again later' : <img src={loaderImg} /> }
         </h2>
       }
     </Container>
