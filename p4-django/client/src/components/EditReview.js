@@ -56,7 +56,7 @@ const EditReview = () => {
       navigate(`/locations/${locationId}`)
     } catch (error) {
       console.log(error)
-      setErrors(error)
+      setErrors(error.message)
     }
   }
 

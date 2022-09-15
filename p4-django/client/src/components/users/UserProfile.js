@@ -26,7 +26,7 @@ const UserProfile = () => {
         console.log('data from profile ---->', data)
         console.log('data from user profile----.>', data.profile_image)
       } catch (error) {
-        setError(error)
+        setError(error.message)
         console.log('error', error)
       }
     }

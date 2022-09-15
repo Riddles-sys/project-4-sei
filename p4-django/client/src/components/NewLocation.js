@@ -83,7 +83,7 @@ const NewLocation = () => {
             <Form.Control type="text" name="youtube_id" placeholder="insert youtube id" value={newLocation.youtube_id} onChange={handleChange} /> 
           </Form.Group>
           <Button className ="button-submit" type="submit">Submit</Button>
-          { errors && <p className='text-danger'>{errors}</p>}
+          { errors && <p className='text-danger'>{errors.message}</p>}
         </Form>
       </div>
     </main>

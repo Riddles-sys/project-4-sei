@@ -13,12 +13,13 @@ const LocationIndex = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('/api/locations')
+        const { data } = await axios.get('/api/locations/')
 
         setLocations(data)
+        console.log('error', data.error.message)
         // console.log(data)
       } catch (error) {
-        // setError(error)
+        setError(error.message)
         console.log(error)
       }
     }

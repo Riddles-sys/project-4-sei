@@ -43,6 +43,7 @@ const Login = () => {
       })
     } catch (error) {
       console.log(error)
+      setError(error.message)
       toast.error(error.data.message, {
         position: 'top-center',
         autoClose: 1200,
@@ -55,51 +56,6 @@ const Login = () => {
     }
   }
 
-  //   return (
-  //     <Container className="form-wrapper min-vh-100">
-  //       <ToastContainer />
-  //       {/* <Row> */}
-  //       <form onSubmit={onSubmit} className="justify-content-between">
-  //         <h3 className="text-center">Login</h3>
-
-  //         {/* UserName */}
-  //         <Row>
-  //           <label htmlFor="email">email</label>
-  //           <input
-  //             onInput={handleChange}
-  //             type="text"
-  //             name="email"
-  //             placeholder="Username"
-  //             required
-  //           />
-  //         </Row>
-  //         {/* Password */}
-  //         <Row>
-  //           <label htmlFor="password">Password</label>
-  //           <input
-  //             onInput={handleChange}
-  //             type="password"
-  //             name="password"
-  //             placeholder="Password"
-  //             required
-  //           />
-  //         </Row>
-  //         {/* Error Message */}
-  //         {/* <p className='text-danger my-2'>Error Message</p> */}
-
-  //         {/* Submit */}
-  //         <input type="submit" value="Login" className="btn dark" />
-  //         <p className="text-center mb-0 mt-3">Not yet registered?</p>
-  //         <p className="text-center mb-0">
-  //           <Link to="/register">Register</Link>
-  //         </p>
-  //       </form>
-  //       {/* </Row> */}
-  //     </Container>
-  //   )
-  // }
-
-  // export default Login
   return (
     <>
       <div className="login-wrapper w-full flex justify-center">

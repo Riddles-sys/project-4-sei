@@ -50,8 +50,9 @@ const Register = () => {
       setFormData(data.formData)
       navigate('/login')
       console.log(formData)
-    } catch (error) {
-      toast.error(error.response.data.message, {
+    } catch (errors) {
+      setErrors(errors.message)
+      toast.error(errors.response.data.message, {
         position: 'top-center',
         autoClose: 1200,
         hideProgressBar: false,
@@ -60,8 +61,8 @@ const Register = () => {
         draggable: true,
         progress: undefined,
       })
-      console.log('error ->', error.response.data.errors)
-      if (error.response.data.errors) setErrors(error.response.data.errors)
+      console.log('error ->', errors.response.data.errors)
+      if (errors.response.data.errors) setErrors(errors.response.data.errors)
     }
   }
 
