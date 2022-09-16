@@ -16,8 +16,34 @@
     display: flex;
     justify-content: space-between;
     .landing-btn {
-      height: 3rem;
+      height: 2.5rem;
     }
   }
+  .title-main {
+    display: flex;
+    justify-content: center;
+    color: #3F706A;
+    animation: blinkingText 2s 5;
+    font-size: 50px;
+    // background-color: black;
+  }
+  @keyframes blinkingText {
+    0% {
+      color: #3F706A;
+    }
+    49% {
+      color: #3F706A;;
+    }
+    60% {
+      color: transparent;
+    }
+    99% {
+      color: transparent;
+    }
+    100% {
+      color: #3F706A;
+    }
+  }
+  
 }
 

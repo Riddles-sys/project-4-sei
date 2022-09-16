@@ -26,7 +26,6 @@ const NewLocation = () => {
           Authorization: `Bearer ${getToken()}`,  
           
         },
-        // setNewLocation({ ...newLocation, name: '',   })
       })
       console.log(data)
       navigate('/locations')
@@ -43,30 +42,30 @@ const NewLocation = () => {
           <Form.Group className="mb-3" >
             <Form.Label>Name</Form.Label>
             {/* name is done  */}
-            <Form.Control type="text" name="name" placeholder="Name of Destination" value={newLocation.name} onChange={handleChange} /> 
+            <Form.Control type="text" name="name" placeholder="Name " value={newLocation.name} onChange={handleChange} /> 
           </Form.Group>
           <hr />
           <Form.Group className="mb-3" >
             <Form.Label>History</Form.Label>
-            <Form.Control type="text" name="history" placeholder="location" value={newLocation.history} onChange={handleChange} />
+            <Form.Control type="text" name="history" placeholder="History" value={newLocation.history} onChange={handleChange} />
             <hr />
           </Form.Group>
           <Form.Group className="mb-3" >
             <Form.Label>Trivia</Form.Label>
-            <Form.Control type="text" name="trivia" placeholder="location" value={newLocation.trivia} onChange={handleChange} />
+            <Form.Control type="text" name="trivia" placeholder="Location" value={newLocation.trivia} onChange={handleChange} />
             <hr />
           </Form.Group>
           <Form.Group className="mb-3" >
             <Form.Label>Image One</Form.Label>
-            <Form.Control as="textarea" type="text" rows={4} name="location_image_1" placeholder="Type description here" value={newLocation.location_image_1} onChange={handleChange} />        
+            <Form.Control as="textarea" type="text" rows={4} name="location_image_1" placeholder="Image URL here" value={newLocation.location_image_1} onChange={handleChange} />        
           </Form.Group>
           <Form.Group className="mb-3" >
             <Form.Label>Image Two</Form.Label>
-            <Form.Control as="textarea" type="text" rows={4} name="location_image_2" placeholder="Type description here" value={newLocation.location_image_2} onChange={handleChange} />        
+            <Form.Control as="textarea" type="text" rows={4} name="location_image_2" placeholder="Image URL here" value={newLocation.location_image_2} onChange={handleChange} />        
           </Form.Group>
           <Form.Group className="mb-3" >
             <Form.Label>Image Three</Form.Label>
-            <Form.Control as="textarea" type="text" rows={4} name="location_image_3" placeholder="Type description here" value={newLocation.location_image_3} onChange={handleChange} />        
+            <Form.Control as="textarea" type="text" rows={4} name="location_image_3" placeholder="Image URL here" value={newLocation.location_image_3} onChange={handleChange} />        
           </Form.Group>
           <hr />
           <Form.Group className="mb-3" >

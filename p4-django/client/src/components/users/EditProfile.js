@@ -86,8 +86,8 @@ const EditProfile = () => {
       { userProfile.email ?
         <>
           <Form onSubmit={handleSubmit} className='edit-user-form'>
-            <h1>Name: { userProfile.email ? userProfile.email : userProfile.email}</h1>
-            <h2>Profile</h2>
+            {/* <h1>User Email: { userProfile.email ? userProfile.email : userProfile.email}</h1> */}
+            {/* <h2>Profile</h2> */}
             <Form.Group className='mb-3' >
               <Form.Label>Username</Form.Label>
               <Form.Control type='text' name='username' placeholder='Edit display name' value={updatedUserProfile.username} onChange={handleChange} />

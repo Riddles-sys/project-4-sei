@@ -30,7 +30,7 @@ const PageNavBar = () => {
   }
 
   return (
-    <NavBar className='nav' expand='md'>
+    <NavBar className='container-nav' expand='md'>
       <ToastContainer />
       <Container>
         <NavBar.Brand as={Link} to='/'>
@@ -42,17 +42,23 @@ const PageNavBar = () => {
         <NavBar.Collapse id='basic-navbar-nav' className='justify-content-end'>
           {userIsAuthenticated() ? (
             <>
-              <Nav.Link as={Link} to='/'>
+              {/* <Nav.Link as={Link} to='/'>
                 <span className='ms-3'>Home</span>
-              </Nav.Link>
+              </Nav.Link> */}
               <Nav.Link as={Link} to='/locations'>
                 <span className='ms-3'>Locations</span>
               </Nav.Link>
-              <Nav.Link as={Link} to='/profile/'>
-                <span className='ms-3'>Profile</span>
-              </Nav.Link>
               <Nav.Link as={Link} to='/maps'>
                 <span className='ms-3'>Maps</span>
+              </Nav.Link>
+              <Nav.Link as={Link} to='/creatures'>
+                <span className='ms-3'>Creatures</span>
+              </Nav.Link>
+              <Nav.Link as={Link} to='/inhabitants'>
+                <span className='ms-3'>Inhabitants</span>
+              </Nav.Link>
+              <Nav.Link as={Link} to='/profile/'>
+                <span className='ms-3'>Profile</span>
               </Nav.Link>
               <Nav.Link onClick={handleLogout} as={Link} to='/'>
                 <span className='ms-3'>Logout</span>
@@ -65,6 +71,12 @@ const PageNavBar = () => {
               </Nav.Link>
               <Nav.Link as={Link} to='/maps'>
                 <span className='ms-3'>Maps</span>
+              </Nav.Link>
+              <Nav.Link as={Link} to='/creatures'>
+                <span className='ms-3'>Creatures</span>
+              </Nav.Link>
+              <Nav.Link as={Link} to='/inhabitants'>
+                <span className='ms-3'>Inhabitants</span>
               </Nav.Link>
               <Nav.Link as={Link} to='/register' className=' ms-3'>
                 <span className=''>Register</span>

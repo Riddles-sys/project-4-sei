@@ -111,11 +111,14 @@ const LocationSingle = () => {
   return (
     <>
       <Container as='main'>
+        
         <Row>
           { location ? 
             <>
-       
-              <h1>{location.name}</h1>
+              <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
+                <h2 className="text-3xl text-gray-700 font-bold mb-5">
+                  {location.name}</h2>
+              </div>
          
               <Col md='6'>
                 <Carousel showArrows={true} >
@@ -124,29 +127,29 @@ const LocationSingle = () => {
                   </div> */}
                   <div>
                     <img src={location.location_image_1} />
-                    <p className="legend">{location.name}</p>
+                    <h3 className="legend">{location.name}</h3>
                   </div>
                   <div>
                     <img src={location.location_image_2} />
-                    <p className="legend">{location.name}</p>
+                    <h3 className="legend">{location.name}</h3>
                   </div>
                   <div>
                     <img src={location.location_image_3} />
-                    <p className="legend">{location.name}</p>
+                    <h3 className="legend">{location.name}</h3>
                   </div>
                 </Carousel>
                 {/* <img className='w-100' src={location.location_image_1} alt={location.name} /> */}
               </Col>
               <Col md='6'>
-                <h2>History</h2>
+                <h2 className='h2-class'>History</h2>
                 <p>{location.history}</p>
-                <h3>Description</h3>
+                <h2>Description</h2>
                 <p>{location.trivia}</p>
                 <hr />
-                <h3>Risk Level</h3>
+                <h2>Risk Level</h2>
                 <p>{location.risk}</p>
                 <hr />
-                <h3>Inhabitants</h3>
+                <h2>Inhabitants</h2>
                 { location.inhabitants.length > 0 &&
                 <>
                   <p>{location.inhabitants.name}</p>
@@ -206,14 +209,14 @@ const LocationSingle = () => {
                 </Col>
                 }
                 <hr />
-                <Link to='/locations' className='btn dark'>Back to all Locations</Link>
+                <button className='btn-back btn-dark'><Link to='/locations' >Back to all Locations</Link></button>
               </Col>
               {/* COMMENTS SECTION */}
               <form onSubmit={submitHandleEdit} >
                 <div className='grid grid-cols-3'>
                   <div className='col-span-2'>
 
-                    <h3>Reviews</h3>
+                    <h3>Destination Reviews</h3>
                     { location.reviews.length > 0
                       &&
                       location.reviews.map(review => {
@@ -256,7 +259,7 @@ const LocationSingle = () => {
             </div>
             <div className='flex justify-between items-center py-2 px-3 border-t dark:border-gray-600 '>
               <button type="submit" value="Add Comment" name={locationId} required className=" btn btn-primary inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-              Post Review
+              Post Review of the Destination
               </button>
             </div>
           </div>

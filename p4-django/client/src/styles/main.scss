@@ -9,11 +9,21 @@
 @import './Footer.scss';
 @import './AboutMe.scss';
 @import './NotFound.scss';
+@import './LocationIndex.scss';
+@import './PavNavBar.scss';
+@import './Maps.scss';
 
 * {
   box-sizing: 0;
+  // background-color: #d0ab734d;
+
   text-decoration: none;
   // a { color: inherit; }; 
+}
+
+.root {
+  background-color: #d0ab734d;
+
 }
 
 .logo-image {
