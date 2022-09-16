@@ -90,7 +90,7 @@ const UserProfile = () => {
           </>
           :
           <h2 className='text-center'>
-            <h1 className='text-center'>{error ? 'user data' : <img src={loaderImg} />}</h1>
+            <p className='text-center'>{error ? 'user data' : <img src={loaderImg} />}</p>
           </h2>
         }
       </div>

@@ -40,7 +40,7 @@ const LocationSingle = () => {
     
 
     } catch (error) {
-      // setErrors(error.message)
+      setErrors(error.message)
 
       console.log(error.message)
     }
@@ -103,24 +103,6 @@ const LocationSingle = () => {
     console.log('setUpdate')
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   useEffect(() => {
     console.log('location', location)
   }, [location])
@@ -129,11 +111,14 @@ const LocationSingle = () => {
   return (
     <>
       <Container as='main'>
+        
         <Row>
           { location ? 
             <>
-       
-              <h1>{location.name}</h1>
+              <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
+                <h2 className="text-3xl text-gray-700 font-bold mb-5">
+                  {location.name}</h2>
+              </div>
          
               <Col md='6'>
                 <Carousel showArrows={true} >
@@ -142,29 +127,29 @@ const LocationSingle = () => {
                   </div> */}
                   <div>
                     <img src={location.location_image_1} />
-                    <p className="legend">{location.name}</p>
+                    <h3 className="legend">{location.name}</h3>
                   </div>
                   <div>
                     <img src={location.location_image_2} />
-                    <p className="legend">{location.name}</p>
+                    <h3 className="legend">{location.name}</h3>
                   </div>
                   <div>
                     <img src={location.location_image_3} />
-                    <p className="legend">{location.name}</p>
+                    <h3 className="legend">{location.name}</h3>
                   </div>
                 </Carousel>
                 {/* <img className='w-100' src={location.location_image_1} alt={location.name} /> */}
               </Col>
               <Col md='6'>
-                <h2>History</h2>
+                <h2 className='h2-class'>History</h2>
                 <p>{location.history}</p>
-                <h3>Description</h3>
+                <h2>Description</h2>
                 <p>{location.trivia}</p>
                 <hr />
-                <h3>Risk Level</h3>
+                <h2>Risk Level</h2>
                 <p>{location.risk}</p>
                 <hr />
-                <h3>Inhabitants</h3>
+                <h2>Inhabitants</h2>
                 { location.inhabitants.length > 0 &&
                 <>
                   <p>{location.inhabitants.name}</p>
@@ -214,15 +199,6 @@ const LocationSingle = () => {
                       </div>
                     </Carousel>
                   </Col>
-                  {/* <Col md='6'>
-                    <img className='w-100' src={location.creatures[0].image1} alt={location.name} />
-                  </Col>
-                  <Col md='6'>
-                    <img className='w-100' src={location.creatures[0].image2} alt={location.name} />
-                  </Col>
-                  <Col md='6'>
-                    <img className='w-100' src={location.creatures[0].image3} alt={location.name} />
-                  </Col> */}
                 </>
                 }
                 {location.youtube_id && 
@@ -233,14 +209,14 @@ const LocationSingle = () => {
                 </Col>
                 }
                 <hr />
-                <Link to='/locations' className='btn dark'>Back to all Locations</Link>
+                <button className='btn-back btn-dark'><Link to='/locations' >Back to all Locations</Link></button>
               </Col>
               {/* COMMENTS SECTION */}
               <form onSubmit={submitHandleEdit} >
                 <div className='grid grid-cols-3'>
                   <div className='col-span-2'>
 
-                    <h3>Reviews</h3>
+                    <h3>Destination Reviews</h3>
                     { location.reviews.length > 0
                       &&
                       location.reviews.map(review => {
@@ -271,25 +247,25 @@ const LocationSingle = () => {
             </>
             :
             <h2 className='text-center'>
-              <h1 className='text-center'>{ errors ? <h2> Something went wrong.</h2> : <img src={loaderImg} /> }</h1>
+              { errors ? <h2> Something went wrong.</h2> : <img src={loaderImg} /> }
             </h2> 
           }
-          
-          <form onSubmit={handleAddComment}>
-            <div className='mb-4 w-1/2 h-1/2 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 pt-2'>
-              <div className='py-2 px-4 bg-white rounded-t-lg dark:bg-gray-600'>
-                <label htmlFor='comment' className='sr-only'>Your comment</label>
-                <textarea id='comment' rows='4' className='px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400' name='text' value={formData.text} maxLength='280' onChange={handleReview} placeholder='Write a comment...' required></textarea>
-              </div>
-              <div className='flex justify-between items-center py-2 px-3 border-t dark:border-gray-600 '>
-                <button type="submit" value="Add Comment" name={locationId} required className=" btn btn-primary inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
-                Post Review
-                </button>
-              </div>
-            </div>
-          </form>
-          
         </Row>
+        <form onSubmit={handleAddComment}>
+          <div className='mb-4 w-full h-1/2 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 pt-2'>
+            <div className='py-2 px-4 bg-white rounded-t-lg dark:bg-gray-600'>
+              <label htmlFor='comment' className='sr-only'>Your comment</label>
+              <textarea id='comment' rows='4' className='px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400' name='text' value={formData.text} maxLength='280' onChange={handleReview} placeholder='Write a comment...' required></textarea>
+            </div>
+            <div className='flex justify-between items-center py-2 px-3 border-t dark:border-gray-600 '>
+              <button type="submit" value="Add Comment" name={locationId} required className=" btn btn-primary inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+              Post Review of the Destination
+              </button>
+            </div>
+          </div>
+        </form>
+          
+     
       </Container>
     </>
   )
