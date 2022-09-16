@@ -18,7 +18,7 @@ const EditProfile = () => {
     id: '',
     email: '',
     username: '',
-    profile_image: 'http://cdn.onlinewebfonts.com/svg/img_568656.png', //! change this
+    profile_image: 'https://t3.ftcdn.net/jpg/02/09/37/00/360_F_209370065_JLXhrc5inEmGl52SyvSPeVB23hB6IjrR.jpg',
   })
 
   const [ location, setLocation ] = useState([])
@@ -40,7 +40,6 @@ const EditProfile = () => {
         setUserProfile(data)
         console.log('data loading user------->', setUserProfile(data))
         setUpdatedUserProfile(data)
-        // !why is it undefined
       } catch (error) {
         console.log(error)
       }

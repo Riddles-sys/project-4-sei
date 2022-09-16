@@ -17,16 +17,7 @@ const NewLocation = () => {
     setNewLocation({ ...newLocation, [event.target.name]: event.target.value })
     setErrors(true)
   }
-  // uploading images
-  // const uploadImage = async (event) => {
-  //   event.preventDefault()
-  //   const formData = new FormData()
-  //   formData.append('file', imageSelect)
-  //   formData.append('upload_preset', 'yfkzazic') 
-  //   const { data } = await axios.post('https://api.cloudinary.com/v1_1/riddles/image/upload', formData)
-  //   setNewImgUrl(data.url)
-  //   setNewLocation({ ...newLocation, name: '',  })
-  // }
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {

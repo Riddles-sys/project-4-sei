@@ -26,11 +26,3 @@ const Landing = () => {
 }
 export default Landing
 
-// import onemap from '../images/1-Map-of-the-pealms-of-Middle-Earth-illustrated-by-studio-MUTI.jpg'
-
-
-// <img className='main-map w-100' src={onemap} useMap="#image-map"/>
-
-// <map name="image-map">
-//   <area target="" alt="The Shire" title="The Shire" href="http://localhost:3000/locations/2/" coords="72,191,227,94" shape="rect"/>
-// </map>

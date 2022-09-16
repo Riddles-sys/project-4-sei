@@ -9,7 +9,6 @@ const Footer = () => {
         <a target='_blank' rel="noreferrer" href='https://www.fast.com'>Test Your Internet!</a>
       </div>
     </footer>
-    // </div>
   )
 }
 

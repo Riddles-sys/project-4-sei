@@ -58,7 +58,7 @@ const LocationIndex = () => {
             :
             <h1>
               {/* {error ? <img src={errorImg} /> : <img src={spinnerImg} />} */}
-              <h1 className='text-center'>{error ? 'no comments' : <img src={loaderImg} />}</h1>
+              {error ? 'no comments' : <img src={loaderImg} />}
             </h1>
           }
 
